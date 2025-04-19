@@ -66,5 +66,5 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     this.reset();
 
     // Optionally, you can show a success message or do something else after form submission.
-    alert("Thank you for your message! We'll get back to you soon.");
+    alert("Thanks for your message! I'll get back to you As soon as Possible.");
 });
