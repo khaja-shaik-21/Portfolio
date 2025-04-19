@@ -72,7 +72,7 @@ nav ul li a {
 .Header {
     height: 814px;
     width: 100%;
-    background-image: url("/imgs/header.jpg");
+    background-image: url("imgs/header.jpg");
     background-size: cover;
     display: flex;
     align-items: center;
