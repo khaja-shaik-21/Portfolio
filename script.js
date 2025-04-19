@@ -57,3 +57,14 @@ const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryCont
 
 exampleCarousel.setControls();
 exampleCarousel.useControls();
+
+// Contact Form Reset & Success Message
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Reset the form fields after submission
+    this.reset();
+
+    // Optionally, you can show a success message or do something else after form submission.
+    alert("Thank you for your message! We'll get back to you soon.");
+});
