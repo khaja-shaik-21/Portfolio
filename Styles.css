@@ -1,0 +1,660 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "DM Serif Text", serif;
+    font-weight: 200;
+    font-style: normal;
+}
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* 
+
+------- Navigation Part ------- 
+
+*/
+.navbar{
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+}
+.name{
+    font-size: 2rem;
+    height: 100px;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: "DM Serif Text", serif;
+}
+.logo{
+    color: black;
+    text-decoration: none;
+}
+.nav{
+    height: 100px;
+    width: 75%;
+    padding-right: 9%;
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    
+}
+nav ul li {
+    margin: 0 1.6rem;
+}
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+
+
+/* 
+
+------- Header Part ----- 
+
+*/
+.Header {
+    height: 814px;
+    width: 100%;
+    background-image: url("/imgs/header.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+}
+.image-div {
+    height: 814px;
+    width: 50%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+.profile-image {
+    height: 450px;
+    border-radius: 50%;
+    padding-bottom: 15%;
+}
+
+.matter {
+    height: 525px;
+    width: 50%;
+    font-family: "DM Serif Text", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #35374B;
+    align-items: flex-start;
+    padding-top: 30%;
+}
+
+.matter-title{
+    font-size: 40px;
+    color: #35374B;
+    display: inline-block;
+}
+
+.wave-image {
+    height: 70px;
+    width: 70px;
+    transform: rotate(20deg);
+    display: inline;
+}
+
+.khaja {
+    font-size: 60px;
+}
+.matter-sub-title{
+    font-size: 25px;
+    color: #35374B;
+}
+/* Download Button */
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #35374B;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: "DM Serif Text", serif;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.download-btn:hover {
+    background-color: #282a3a;
+}
+.download-btn a{
+    text-decoration: none;
+    color: white;
+}
+
+/* 
+
+------- About Part ------- 
+
+*/
+.About {
+    height: 815px;
+    width: 100%;
+    display: flex;
+    background: linear-gradient(to bottom, #96a4c4  ,#EEF5FF);
+}
+.About-img{
+    height: 715px;
+    width: 50%;
+    padding-top: 7%;
+    display: flex;
+    align-items:center;
+}
+.About-img img{
+    height: 450px;
+    border-radius: 50%;
+    object-fit: contain;
+    padding-left: 23%;
+}
+.About-content{
+    height: 715px;
+    width: 60%;
+    padding-top: 5%;
+}
+.About-title {
+    height: 100px;
+    width: 100%;
+    font-size: 30px;
+    color: #35374B;
+    padding-top: 20%;
+}
+.content {
+    height: 600px;
+    width: 100%;
+    font-size: 20px;
+    font-family: serif;
+    font-style: normal;
+    display: flex;
+    align-items: flex-start;
+    max-width: 800px;
+}.points {
+    margin-right: 20px;
+    padding-top: 10px;
+}
+.points .point-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.points .dot {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.points .line {
+    width: 2px;
+    height: 20px;
+    padding-top: 30px;
+    background-color: black;
+}
+
+.About-matter{
+    height: 600px;
+    width: 90%;
+}
+
+/* 
+
+------- Skills Part ------- 
+
+*/
+#Skills {
+    height: 815px;
+    width: 100%;
+    background-color: #EEF5FF;
+}
+.skill-title{
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.skill-section{
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 80px;
+    
+}
+
+.Frontend{
+    height: 400px;
+    width: 23%;
+    border-style: solid;
+    border-radius: 10px;
+}
+.Frontend-img{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    background-color: #35374B;
+    color: aliceblue;
+}
+.tech-list{
+    text-align: center;
+    font-size: large;
+    padding-top: 20px;
+}
+.tech-list p{
+    padding: 5px;
+}
+.Ai{
+    height: 400px;
+    width: 23%;
+    border-style: solid;
+    border-radius: 10px;
+}
+.Ai-img{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #35374B;
+    color: aliceblue;
+}
+
+.other{
+    height: 400px;
+    width: 23%;
+    border-style: solid;
+    border-radius: 10px;
+}
+.other-img{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #35374B;
+    color: aliceblue;
+}
+/* 
+
+------- Projects Part ------- 
+
+*/
+.Projects {
+    height: 815px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #EEF5FF;
+}
+.card-wrapper{
+    padding-top: 7%;
+}
+.card-list{
+    display: flex;
+    gap: 100px;
+}
+.card-list .card-item{
+    list-style: none;
+}
+.card-list .card-item .card-link{
+    width: 400px;
+    display: block;
+    padding: 18px;
+    text-decoration: none;
+    border-style: solid;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 10px rgb(0, 0, 0, 0.05);
+    transition: 0.2s ease;
+}
+.card-list .card-item .card-link:hover{
+    border-color: #282a3a;
+}
+
+.card-list .card-link .card-image{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-list .card-link .badge{
+    color: #0056b3;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 16px 0 18px;
+    padding: 8px 16px;
+    background: #DDE4FF;
+    width: fit-content;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.card-list .card-link .card-title{
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 600;
+}
+.card-desc{
+    color: black;
+    font-family: "DM Serif Text", serif;
+}
+.card-list .card-link .card-button{
+    height: 35px;
+    width: 35px;
+    color: #0056b3;
+    border-radius: 50px;
+    margin: 30px 0 5px;
+    background: none;
+    cursor: pointer;
+    border: 2px solid ;
+    transform: rotate(-40deg);
+    transition: 0.4s ease;
+}
+.card-list .card-link:hover .card-button{
+    color: #fff;
+    background: #282a3a;
+}
+/* 
+
+------- Certificates Part ------- 
+
+*/
+#Certificates {
+    height: 815px;
+    width: 100%;
+    background: linear-gradient(to bottom, #EEF5FF, white);
+}
+.gallery{
+    height: 615px;
+    width: 100%;
+    align-items: center;
+}
+
+.gallery-container{
+    align-items: end;
+    display: flex;
+    height: 600px;
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+}
+.gallery-item{
+    height: 200px;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+    width: 330px;
+    z-index: 0;
+    border-radius: 15px;
+    background-size: contain;
+}
+.gallery-item-1{
+    left: 15%;
+    opacity: .4;
+    transform: translateX(-50%);
+}
+.gallery-item-2, .gallery-item-4{
+    height: 250px;
+    opacity: 0.8;
+    width: 380px;
+    z-index: 1;
+}
+.gallery-item-2 {
+    left: 30%;
+    transform: translateX(-50%);
+}
+  
+.gallery-item-3 {
+    box-shadow: 2px 5px 33px 6px rgba(0, 0, 0, 0.35);
+    opacity: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 300px;
+    width: 430px;
+    z-index: 2;
+}
+  
+.gallery-item-4 {
+    left: 70%;
+    transform: translateX(-50%);
+}
+  
+.gallery-item-5 {
+    left: 85%;
+    opacity: .4;
+    transform: translateX(-50%);
+}
+
+.gallery-controls {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    height: 100px;
+}
+
+.gallery-controls button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 30px;
+    margin: 0 50px;
+    padding: 0 12px;
+    text-transform: capitalize;
+}
+
+.gallery-controls-button:focus {
+    outline: none;
+}
+
+.gallery-controls-previous {
+    position: relative;
+}
+
+.gallery-controls-previous::before {
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    content: '';
+    display: inline-block;
+    height: 5px;
+    left: -30px;
+    padding: 10px;
+    position: absolute;
+    top: 25%;
+    transform: rotate(135deg) translateY(-50%);
+    transition: left 0.15s ease-in-out;
+    width: 5px;
+}
+
+.gallery-controls-previous:hover::before {
+    left: -40px;
+}
+
+.gallery-controls-next {
+    position: relative;
+}
+
+.gallery-controls-next::before {
+    border: solid #000;
+    border-width: 0 5px 5px 0;
+    content: '';
+    display: inline-block;
+    height: 5px;
+    padding: 10px;
+    position: absolute;
+    right: -30px;
+    top: 45%;
+    transform: rotate(-45deg) translateY(-50%);
+    transition: right 0.15s ease-in-out;
+    width: 5px;
+}
+
+.gallery-controls-next:hover::before {
+    right: -40px;
+}
+
+.gallery-nav {
+    bottom: -15px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.gallery-nav li {
+    background: #ccc;
+    border-radius: 50%;
+    height: 10px;
+    margin: 0 16px;
+    width: 10px;
+}
+.gallery-nav li.gallery-item-selected{
+    background: #555;
+}
+
+
+
+/* 
+
+------- Contact Part ------- 
+
+*/
+#Contact {
+    height: 615px;
+    width: 100%;
+    padding-top: 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.contact-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    border: 5px solid transparent;
+    box-shadow: 0 10px 10px rgb(0, 0, 0, 0.05);
+}
+.contact-form:hover{
+    border: 2px solid black;
+}
+.contact-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #35374B;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.form-group textarea {
+    height: 100px;
+}
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #0056b3;
+}
+.form-group .button{
+    margin-top: 5%;
+}
+
+
+/* 
+
+--------Footer Section-------------- 
+
+*/
+.footer-container {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.follow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.footer-icons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    
+}
+.footer-icons ul li {
+    margin: 0 1.5rem;
+    
+    
+}
+.footer-icons ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+.footer-icons p{
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
