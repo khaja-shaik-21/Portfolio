@@ -123,6 +123,20 @@ nav ul li a {
     font-size: 25px;
     color: #35374B;
 }
+/* Social Media */
+.footer-icons ul {
+    list-style: none;
+    margin: 0;
+    padding-top: 20px;
+    display: flex;
+    gap: 1.5rem;
+    
+}
+.footer-icons ul li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
 /* Download Button */
 .download-btn {
     display: inline-block;
@@ -622,39 +636,13 @@ nav ul li a {
 
 */
 .footer-container {
-    height: 100px;
+    height: 50px;
     width: 100%;
     background-color: black;
     color: white;
     text-align: center;
 }
-.follow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.footer-icons ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 1.8rem;
-    
-}
-.footer-icons ul li {
-    margin: 0 1.5rem;
-    
-    
-}
-.footer-icons ul li a {
-    color: black;
-    text-decoration: none;
-    font-size: 1.3rem;
-}
 .footer-icons p{
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
