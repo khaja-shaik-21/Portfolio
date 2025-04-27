@@ -58,13 +58,24 @@ const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryCont
 exampleCarousel.setControls();
 exampleCarousel.useControls();
 
-// Contact Form Reset & Success Message
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+const form = document.getElementById('contactForm');
 
-    // Reset the form fields after submission
-    this.reset();
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
 
-    // Optionally, you can show a success message or do something else after form submission.
-    alert("Thanks for your message! I'll get back to you As soon as Possible.");
+    const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        alert("Thank you! I'll get back to you as soon as possible.");
+        form.reset();
+    } else {
+        alert('Oops! There was a problem submitting your Contact form.');
+    }
 });
