@@ -1,3 +1,4 @@
+// Certificates Section Script
 const galleryContainer = document.querySelector('.gallery-container');
 const galleryControlsContainer = document.querySelector('.gallery-controls');
 const galleryControls = ['previous', 'next'];
@@ -58,6 +59,7 @@ const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryCont
 exampleCarousel.setControls();
 exampleCarousel.useControls();
 
+// Contact Form Script
 const form = document.getElementById('contactForm');
 
 form.addEventListener('submit', async (e) => {
