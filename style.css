@@ -5,44 +5,38 @@
     font-weight: 200;
     font-style: normal;
 }
-body{
+body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-/* 
-
-------- Navigation Part ------- 
-
-*/
-.navbar{
-    height: 100px;
+/* ------- Navigation Part ------- */
+.navbar {
+    height: 80px;
     width: 100%;
     position: fixed;
     display: flex;
 }
-.name{
+.name {
     font-size: 2rem;
-    height: 100px;
+    height: 80px;
     width: 35%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    font-family: "DM Serif Text", serif;
 }
-.logo{
+.logo {
     color: black;
     text-decoration: none;
 }
-.nav{
-    height: 100px;
+.nav {
+    height: 80px;
     width: 75%;
     padding-right: 9%;
     display: flex;
     justify-content: right;
     align-items: flex-end;
-    
 }
 nav ul {
     list-style: none;
@@ -51,7 +45,6 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 1.8rem;
-    
 }
 nav ul li {
     margin: 0 1.6rem;
@@ -59,16 +52,10 @@ nav ul li {
 nav ul li a {
     color: black;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
-
-
-/* 
-
-------- Header Part ----- 
-
-*/
+/* ------- Header Part ----- */
 .Header {
     height: 814px;
     width: 100%;
@@ -77,11 +64,10 @@ nav ul li a {
     display: flex;
     align-items: center;
     justify-content: right;
-
 }
 .image-div {
     height: 814px;
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: end;
     justify-content: end;
@@ -91,38 +77,33 @@ nav ul li a {
     border-radius: 50%;
     padding-bottom: 15%;
 }
-
 .matter {
     height: 525px;
     width: 50%;
-    font-family: "DM Serif Text", serif;
     font-weight: 500;
-    font-style: normal;
     color: #35374B;
     align-items: flex-start;
     padding-top: 30%;
 }
-
-.matter-title{
+.matter-title {
     font-size: 40px;
     color: #35374B;
     display: inline-block;
 }
-
 .wave-image {
     height: 70px;
     width: 70px;
     transform: rotate(20deg);
     display: inline;
 }
-
 .khaja {
     font-size: 60px;
 }
-.matter-sub-title{
+.matter-sub-title {
     font-size: 25px;
     color: #35374B;
 }
+
 /* Social Media */
 .footer-icons ul {
     list-style: none;
@@ -130,59 +111,59 @@ nav ul li a {
     padding-top: 20px;
     display: flex;
     gap: 1.5rem;
-    
 }
 .footer-icons ul li a {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 0.5rem;
 }
 
 /* Download Button */
 .download-btn {
+    color: black;
     display: inline-block;
     padding: 10px 20px;
-    background-color: #35374B;
-    color: white;
     text-decoration: none;
     border-radius: 25px;
-    font-family: "DM Serif Text", serif;
     font-size: 16px;
     margin-top: 20px;
     cursor: pointer;
+    border: 2px solid #282a3a;
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 .download-btn:hover {
-    background-color: #282a3a;
-}
-.download-btn a{
-    text-decoration: none;
+    background-color: #000000;
     color: white;
 }
+.download-btn a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 
-/* 
-
-------- About Part ------- 
-
-*/
+/* ------- About Part ------- */
 .About {
     height: 815px;
     width: 100%;
     display: flex;
-    background: linear-gradient(to bottom, #96a4c4  ,#EEF5FF);
+    background: linear-gradient(to bottom, #96a4c4, #EEF5FF);
 }
-.About-img{
+.About-img {
     height: 715px;
     width: 50%;
     padding-top: 7%;
     display: flex;
-    align-items:center;
+    align-items: center;
 }
-.About-img img{
+.About-img img {
     height: 450px;
     border-radius: 50%;
     object-fit: contain;
     padding-left: 23%;
 }
-.About-content{
+.About-content {
     height: 715px;
     width: 60%;
     padding-top: 5%;
@@ -203,7 +184,8 @@ nav ul li a {
     display: flex;
     align-items: flex-start;
     max-width: 800px;
-}.points {
+}
+.points {
     margin-right: 20px;
     padding-top: 10px;
 }
@@ -226,30 +208,31 @@ nav ul li a {
     padding-top: 30px;
     background-color: black;
 }
-
-.About-matter{
+.About-matter {
     height: 600px;
     width: 90%;
 }
 
-/* 
-
-------- Skills Part ------- 
-
-*/
+/* ------- Skills Part ------- */
 #Skills {
     height: 815px;
     width: 100%;
     background-color: #EEF5FF;
 }
-.skill-title{
+.skill-title {
     height: 250px;
     width: 100%;
     display: flex;
+    font-size: 20px;
     align-items: end;
     justify-content: center;
 }
-.skill-section{
+.skill-title h1 {
+    font-size: 30px;
+    color: #35374B;
+    font-weight: 600;
+}
+.skill-section {
     height: 500px;
     width: 100%;
     display: flex;
@@ -257,113 +240,98 @@ nav ul li a {
     align-items: center;
     flex-direction: row;
     gap: 80px;
-    
 }
-
-.Frontend{
+.Frontend, .Ai, .other {
     height: 400px;
     width: 23%;
     border-style: solid;
     border-radius: 10px;
 }
-.Frontend-img{
+.Frontend-img, .Ai-img, .other-img {
     height: 140px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align:center;
+    text-align: center;
     background-color: #35374B;
     color: aliceblue;
 }
-.tech-list{
+.tech-list {
     text-align: center;
     font-size: large;
     padding-top: 20px;
 }
-.tech-list p{
+.tech-list p {
     padding: 5px;
 }
-.Ai{
-    height: 400px;
-    width: 23%;
-    border-style: solid;
-    border-radius: 10px;
-}
-.Ai-img{
-    height: 140px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #35374B;
-    color: aliceblue;
-}
 
-.other{
-    height: 400px;
-    width: 23%;
-    border-style: solid;
-    border-radius: 10px;
-}
-.other-img{
-    height: 140px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #35374B;
-    color: aliceblue;
-}
-/* 
-
-------- Projects Part ------- 
-
-*/
+/* ------- Projects Part ------- */
 .Projects {
     height: 815px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
     min-height: 100vh;
     background-color: #EEF5FF;
+    padding-top: 1px; /* Added padding to push content down */
 }
-.card-wrapper{
-    padding-top: 7%;
-}
-.card-list{
+.projects-title {
+    height: 120px;
+    width: 100%;
     display: flex;
-    gap: 100px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
 }
-.card-list .card-item{
+.projects-title h1 {
+    font-size: 30px;
+    color: #35374B;
+    font-weight: 600;
+}   
+
+.card-wrapper {
+    padding-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.card-list {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    padding-bottom: 60px; /* Added padding to bring cards to bottom center */
+}
+.card-list .card-item {
     list-style: none;
 }
-.card-list .card-item .card-link{
-    width: 400px;
+.card-list .card-item .card-link {
+    width: 350px;
+    height: 500px;
     display: block;
     padding: 18px;
     text-decoration: none;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 30px;
     border: 2px solid transparent;
     box-shadow: 0 10px 10px rgb(0, 0, 0, 0.05);
     transition: 0.2s ease;
 }
-.card-list .card-item .card-link:hover{
+.card-list .card-item .card-link{
     border-color: #282a3a;
 }
-
-.card-list .card-link .card-image{
+.card-list .card-link .card-image {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 10px;
 }
-
-.card-list .card-link .badge{
+.card-list .card-link .badge {
     color: #0056b3;
     font-size: 0.95rem;
     font-weight: 500;
@@ -374,17 +342,16 @@ nav ul li a {
     border-radius: 50px;
     display: inline-block;
 }
-
-.card-list .card-link .card-title{
+.card-list .card-link .card-title {
     font-size: 1.5rem;
     color: black;
     font-weight: 600;
 }
-.card-desc{
+.card-desc {
     color: black;
     font-family: "DM Serif Text", serif;
 }
-.card-list .card-link .card-button{
+.card-list .card-link .card-button {
     height: 35px;
     width: 35px;
     color: #0056b3;
@@ -392,39 +359,63 @@ nav ul li a {
     margin: 30px 0 5px;
     background: none;
     cursor: pointer;
-    border: 2px solid ;
+    border: 2px solid;
     transform: rotate(-40deg);
     transition: 0.4s ease;
 }
-.card-list .card-link:hover .card-button{
+.card-list .card-link:hover .card-button {
     color: #fff;
     background: #282a3a;
 }
-/* 
 
-------- Certificates Part ------- 
+/* Show only two cards centered at the bottom */
+.card-list {
+    justify-content: center;
+    align-items: flex-end;
+    gap: 50px;
+}
+.card-list .card-item {
+    display: none;
+}
+.card-list .card-item:nth-child(1),
+.card-list .card-item:nth-child(2) {
+    display: block;
+}
 
-*/
+
+/* ------- Certificates Part ------- */
 #Certificates {
     height: 815px;
     width: 100%;
     background: linear-gradient(to bottom, #EEF5FF, white);
 }
-.gallery{
+.gallery {
     height: 615px;
     width: 100%;
     align-items: center;
 }
-
-.gallery-container{
+.gallery-title {
+    height: 250px;
+    width: 100%;
+    display: flex;
+    font-size: 20px;
+    align-items: end;
+    justify-content: center;
+}
+.gallery-title h1 {
+    font-size: 30px;
+    color: #35374B;
+    font-weight: 600;
+}
+.gallery-container {
     align-items: end;
     display: flex;
-    height: 600px;
+    height: 400px;
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
 }
-.gallery-item{
+.gallery-item {
     height: 200px;
     opacity: 0;
     position: absolute;
@@ -434,12 +425,12 @@ nav ul li a {
     border-radius: 15px;
     background-size: contain;
 }
-.gallery-item-1{
+.gallery-item-1 {
     left: 15%;
     opacity: .4;
     transform: translateX(-50%);
 }
-.gallery-item-2, .gallery-item-4{
+.gallery-item-2, .gallery-item-4 {
     height: 250px;
     opacity: 0.8;
     width: 380px;
@@ -449,7 +440,6 @@ nav ul li a {
     left: 30%;
     transform: translateX(-50%);
 }
-  
 .gallery-item-3 {
     box-shadow: 2px 5px 33px 6px rgba(0, 0, 0, 0.35);
     opacity: 1;
@@ -459,25 +449,21 @@ nav ul li a {
     width: 430px;
     z-index: 2;
 }
-  
 .gallery-item-4 {
     left: 70%;
     transform: translateX(-50%);
 }
-  
 .gallery-item-5 {
     left: 85%;
     opacity: .4;
     transform: translateX(-50%);
 }
-
 .gallery-controls {
     display: flex;
     justify-content: center;
     margin: 25px 0;
     height: 100px;
 }
-
 .gallery-controls button {
     background-color: transparent;
     border: 0;
@@ -487,15 +473,12 @@ nav ul li a {
     padding: 0 12px;
     text-transform: capitalize;
 }
-
 .gallery-controls-button:focus {
     outline: none;
 }
-
 .gallery-controls-previous {
     position: relative;
 }
-
 .gallery-controls-previous::before {
     border: solid black;
     border-width: 0 5px 5px 0;
@@ -510,15 +493,12 @@ nav ul li a {
     transition: left 0.15s ease-in-out;
     width: 5px;
 }
-
 .gallery-controls-previous:hover::before {
     left: -40px;
 }
-
 .gallery-controls-next {
     position: relative;
 }
-
 .gallery-controls-next::before {
     border: solid #000;
     border-width: 0 5px 5px 0;
@@ -533,11 +513,9 @@ nav ul li a {
     transition: right 0.15s ease-in-out;
     width: 5px;
 }
-
 .gallery-controls-next:hover::before {
     right: -40px;
 }
-
 .gallery-nav {
     bottom: -15px;
     display: flex;
@@ -547,7 +525,6 @@ nav ul li a {
     position: absolute;
     width: 100%;
 }
-
 .gallery-nav li {
     background: #ccc;
     border-radius: 50%;
@@ -555,17 +532,11 @@ nav ul li a {
     margin: 0 16px;
     width: 10px;
 }
-.gallery-nav li.gallery-item-selected{
+.gallery-nav li.gallery-item-selected {
     background: #555;
 }
 
-
-
-/* 
-
-------- Contact Part ------- 
-
-*/
+/* ------- Contact Part ------- */
 #Contact {
     height: 615px;
     width: 100%;
@@ -573,7 +544,7 @@ nav ul li a {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .contact-form {
-    max-width: 500px;
+    max-width: 450px;
     margin: 50px auto;
     padding: 20px;
     padding-bottom: 20px;
@@ -581,7 +552,7 @@ nav ul li a {
     border: 5px solid transparent;
     box-shadow: 0 10px 10px rgb(0, 0, 0, 0.05);
 }
-.contact-form:hover{
+.contact-form {
     border: 2px solid black;
 }
 .contact-form h2 {
@@ -616,33 +587,27 @@ nav ul li a {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    color: #fff;
-    background-color: black;
-    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
     cursor: pointer;
 }
-.form-group button:hover {
-    background-color: #0056b3;
-}
-.form-group .button{
+
+.form-group .button {
     margin-top: 5%;
 }
 
-
-/* 
-
---------Footer Section-------------- 
-
-*/
+/* --------Footer Section-------------- */
 .footer-container {
     height: 50px;
     width: 100%;
-    background-color: black;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
 }
-.footer-icons p{
+.footer-icons p {
     padding-top: 10px;
     padding-bottom: 10px;
 }
