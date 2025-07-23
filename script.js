@@ -52,12 +52,19 @@ class Carousel {
             });
         });
     }
+
+    autoScroll(interval = 3000) {
+        setInterval(() => {
+            this.setCurrentState('next');
+        }, interval);
+    }
 }
 
 const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls);
 
 exampleCarousel.setControls();
 exampleCarousel.useControls();
+exampleCarousel.autoScroll();
 
 // Contact Form Script
 const form = document.getElementById('contactForm');
