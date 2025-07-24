@@ -17,6 +17,7 @@ body {
     width: 100%;
     position: fixed;
     display: flex;
+    z-index: 1000;
 }
 .name {
     font-size: 2rem;
@@ -305,7 +306,7 @@ nav ul li a {
     justify-content: center;
     align-items: flex-end;
     width: 100%;
-    padding-bottom: 60px; /* Added padding to bring cards to bottom center */
+    padding-bottom: 60px; 
 }
 .card-list .card-item {
     list-style: none;
@@ -320,10 +321,11 @@ nav ul li a {
     border-radius: 30px;
     border: 2px solid transparent;
     box-shadow: 0 10px 10px rgb(0, 0, 0, 0.05);
-    transition: 0.2s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.card-list .card-item .card-link{
+.card-list .card-item .card-link:hover {
     border-color: #282a3a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .card-list .card-link .card-image {
     width: 100%;
@@ -383,17 +385,23 @@ nav ul li a {
 }
 
 
+
 /* ------- Certificates Part ------- */
 #Certificates {
     height: 815px;
     width: 100%;
     background: linear-gradient(to bottom, #EEF5FF, white);
+    position: relative; 
+    z-index: 1; 
 }
+
 .gallery {
     height: 615px;
     width: 100%;
     align-items: center;
+    position: relative; 
 }
+
 .gallery-title {
     height: 200px;
     width: 100%;
@@ -402,19 +410,22 @@ nav ul li a {
     align-items: end;
     justify-content: center;
 }
+
 .gallery-title h1 {
     font-size: 30px;
     color: #35374B;
     font-weight: 600;
 }
+
 .gallery-container {
     align-items: end;
     display: flex;
-    height: 450px;
+    height: 400px;
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
 }
+
 .gallery-item {
     height: 300px;
     opacity: 0;
@@ -425,6 +436,7 @@ nav ul li a {
     border-radius: 15px;
     background-size: contain;
 }
+
 .gallery-item-1 {
     left: 15%;
     opacity: .4;
@@ -432,16 +444,19 @@ nav ul li a {
     width: 380px;
     transform: translateX(-50%);
 }
+
 .gallery-item-2, .gallery-item-4 {
     height: 300px;
     opacity: 0.8;
     width: 400px;
     z-index: 1;
 }
+
 .gallery-item-2 {
     left: 30%;
     transform: translateX(-50%);
 }
+
 .gallery-item-3 {
     box-shadow: 2px 5px 33px 6px rgba(0, 0, 0, 0.35);
     opacity: 1;
@@ -450,11 +465,15 @@ nav ul li a {
     height: 330px;
     width: 500px;
     z-index: 2;
+    position: relative; 
+    cursor: pointer; 
 }
+
 .gallery-item-4 {
     left: 70%;
     transform: translateX(-50%);
 }
+
 .gallery-item-5 {
     height: 250px;
     width: 380px;
@@ -462,12 +481,110 @@ nav ul li a {
     opacity: .4;
     transform: translateX(-50%);
 }
+
+
+.certificate-link-wrapper {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 500px;
+    height: 330px; 
+    z-index: 10;
+    pointer-events: none;
+    margin-top: -130px; 
+}
+
+
+.certificate-link-icon {
+    position: absolute;
+    bottom: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    z-index: 15;
+    border: 2px solid #35374B;
+    pointer-events: auto;
+}
+
+.certificate-link-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #35374B;
+    transition: all 0.4s ease;
+}
+
+
+.certificate-link-wrapper:hover .certificate-link-icon {
+    bottom: 10px; 
+    left: 50%; 
+    transform: translateX(-50%) scale(1.2) translateY(-3px); 
+    background: linear-gradient(135deg, #35374B, #2c2e45);
+    width: 80px; 
+    height:80px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.certificate-link-wrapper:hover .certificate-link-icon svg {
+    fill: white;
+    width: 28px; 
+    height: 28px;
+}
+
+
+.certificate-link-wrapper:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(53, 55, 75, 0.4) 0%, 
+        rgba(53, 55, 75, 0.2) 50%, 
+        rgba(53, 55, 75, 0.1) 100%);
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    z-index: 5;
+}
+
+@keyframes iconPulse {
+    0%, 100% { 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transform: translateX(-50%) scale(1);
+    }
+    50% { 
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+.certificate-link-icon {
+    animation: iconPulse 2s infinite ease-in-out;
+}
+
+.certificate-link-wrapper:hover .certificate-link-icon {
+    animation: none;
+}
+
 .gallery-controls {
     display: flex;
     justify-content: center;
     margin: 25px 0;
     height: 100px;
 }
+
 .gallery-controls button {
     background-color: transparent;
     border: 0;
@@ -477,12 +594,15 @@ nav ul li a {
     padding: 0 12px;
     text-transform: capitalize;
 }
+
 .gallery-controls-button:focus {
     outline: none;
 }
+
 .gallery-controls-previous {
     position: relative;
 }
+
 .gallery-controls-previous::before {
     border: solid black;
     border-width: 0 5px 5px 0;
@@ -497,12 +617,15 @@ nav ul li a {
     transition: left 0.15s ease-in-out;
     width: 5px;
 }
+
 .gallery-controls-previous:hover::before {
     left: -40px;
 }
+
 .gallery-controls-next {
     position: relative;
 }
+
 .gallery-controls-next::before {
     border: solid #000;
     border-width: 0 5px 5px 0;
@@ -517,9 +640,11 @@ nav ul li a {
     transition: right 0.15s ease-in-out;
     width: 5px;
 }
+
 .gallery-controls-next:hover::before {
     right: -40px;
 }
+
 .gallery-nav {
     bottom: -15px;
     display: flex;
@@ -529,6 +654,7 @@ nav ul li a {
     position: absolute;
     width: 100%;
 }
+
 .gallery-nav li {
     background: #ccc;
     border-radius: 50%;
@@ -536,6 +662,7 @@ nav ul li a {
     margin: 0 16px;
     width: 10px;
 }
+
 .gallery-nav li.gallery-item-selected {
     background: #555;
 }
