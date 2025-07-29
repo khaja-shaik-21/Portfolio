@@ -219,7 +219,10 @@ nav ul li a {
     height: 815px;
     width: 100%;
     background-color: #EEF5FF;
+    position: relative;
+    overflow: hidden;
 }
+
 .skill-title {
     height: 250px;
     width: 100%;
@@ -227,12 +230,17 @@ nav ul li a {
     font-size: 20px;
     align-items: end;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
+
 .skill-title h1 {
     font-size: 30px;
     color: #35374B;
     font-weight: 600;
+    padding-bottom: 50px;
 }
+
 .skill-section {
     height: 500px;
     width: 100%;
@@ -240,16 +248,36 @@ nav ul li a {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 80px;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
 }
-.Frontend, .Ai, .other {
+
+.Frontend, .other {
     height: 400px;
     width: 23%;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 20px;
+    /* background-color: white; */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
-.Frontend-img, .Ai-img, .other-img {
-    height: 140px;
+.Ai{
+    height: 500px;
+    width: 30%;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: rgb(240, 245, 255);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.Frontend:hover, .Ai:hover, .other:hover {
+    transform: translateY(-10px);
+}
+
+.Frontend-img, .other-img {
+    height: 120px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -257,14 +285,234 @@ nav ul li a {
     text-align: center;
     background-color: #35374B;
     color: aliceblue;
+    border-radius: 10px 10px 0 0;
+}
+.Ai-img{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #35374B;
+    color: aliceblue;
+    border-radius: 10px 10px 0 0;
 }
 .tech-list {
     text-align: center;
     font-size: large;
-    padding-top: 20px;
+    padding: 25px 10px;
 }
+
 .tech-list p {
     padding: 5px;
+    color: #35374B;
+}
+
+/* ------- Floating Icons Styles ------- */
+.floating-icons-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3; /* Above the cards and title */
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 3.7rem; /* Reduced size - was 6rem */
+    color: rgba(53, 55, 75, 0.6); /* More visible */
+    opacity: 0;
+    transform: scale(0.3);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    animation-fill-mode: both;
+    z-index: 0; /* Ensure icons appear above everything */
+    pointer-events: none;
+}
+
+/* Icon states */
+.floating-icon.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.floating-icon.hide {
+    opacity: 0;
+    transform: scale(0.3);
+}
+
+/* Floating animation for visible icons */
+.floating-icon.floating {
+    animation: gentleFloat 6s ease-in-out infinite;
+}
+
+/* Smooth floating animation */
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: scale(1) translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: scale(1.05) translateY(-10px) rotate(1deg);
+    }
+    50% {
+        transform: scale(1) translateY(-5px) rotate(0deg);
+    }
+    75% {
+        transform: scale(1.05) translateY(-15px) rotate(-1deg);
+    }
+}
+
+/* Entrance animation */
+@keyframes fadeScaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Exit animation */
+@keyframes fadeScaleOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8) translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translateY(15px);
+    }
+}
+
+/* Apply entrance animation */
+.floating-icon.show {
+    animation: fadeScaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Apply exit animation */
+.floating-icon.hide {
+    animation: fadeScaleOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .skill-section {
+        gap: 40px;
+    }
+    
+    .Frontend, .Ai, .other {
+        width: 28%;
+    }
+    
+    .floating-icon {
+        font-size: 2.5rem; /* Reduced for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    #Skills {
+        height: auto;
+        padding-bottom: 50px;
+    }
+    
+    .skill-section {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+        padding: 0 20px;
+    }
+    
+    .Frontend, .Ai, .other {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .floating-icon {
+        font-size: 2rem; /* Reduced for mobile */
+    }
+    
+    /* Adjust floating animation for mobile */
+    @keyframes gentleFloat {
+        0%, 100% {
+            transform: scale(1) translateY(0px);
+        }
+        50% {
+            transform: scale(1.02) translateY(-8px);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-title h1 {
+        font-size: 24px;
+    }
+    
+    .Frontend, .Ai, .other {
+        width: 95%;
+    }
+    
+    .floating-icon {
+        font-size: 1.5rem; /* Small for mobile */
+    }
+    
+    .skill-section {
+        gap: 20px;
+    }
+}
+
+/* Additional icon visibility adjustments */
+.floating-icon {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Ensure smooth performance */
+.floating-icons-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Tech-specific color variations */
+.floating-icon[data-tech*="HTML"],
+.floating-icon[data-tech*="CSS"],
+.floating-icon[data-tech*="JavaScript"] {
+    color: rgba(255, 95, 109, 0.5); /* Reddish for frontend */
+}
+
+.floating-icon[data-tech*="Python"],
+.floating-icon[data-tech*="ML"],
+.floating-icon[data-tech*="Analytics"] {
+    color: rgba(76, 175, 80, 0.5); /* Greenish for AI/Python */
+}
+
+.floating-icon[data-tech*="Docker"],
+.floating-icon[data-tech*="AWS"],
+.floating-icon[data-tech*="Git"],
+.floating-icon[data-tech*="SQL"] {
+    color: rgba(33, 150, 243, 0.5); /* Blueish for tools */
+}
+
+/* Ensure icons don't interfere with user interactions */
+.floating-icons-container * {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* ------- Projects Part ------- */
