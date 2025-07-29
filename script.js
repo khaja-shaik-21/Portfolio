@@ -356,6 +356,11 @@ window.addEventListener('load', initializeFloatingIcons);
 
 
 
+
+
+
+
+
 // -------------- Certificate Section --------------
 const certificateLinks = {
     'Aviatrix_cloud.jpg': 'https://www.credly.com/badges/b2f8b061-fe9f-46d3-b8c9-872d2d541fa7/public_url',
