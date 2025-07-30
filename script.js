@@ -24,13 +24,14 @@ class FloatingIconsManager {
             { icon: 'devicon-fastapi-plain-wordmark', name: 'FastAPI' },
             { icon: 'devicon-mysql-plain-wordmark colored', name: 'MySQL' },
             { icon: 'devicon-mongodb-plain-wordmark colored', name: 'MongoDB' },
+            { icon: 'devicon-microsoftsqlserver-plain-wordmark colored', name: 'Microsoft SQL Server' },
             { icon: 'devicon-postgresql-plain', name: 'PostgreSQL' },
             { icon: 'devicon-sqlite-plain', name: 'SQLite' },
             { icon: 'devicon-sqlalchemy-plain', name: 'SQLAlchemy' },
             
             // AI & Data Engineering
-            { icon: 'devicon-numpy-original', name: 'NumPy' },
-            { icon: 'devicon-pandas-original', name: 'Pandas' },
+            { icon: 'devicon-numpy-plain-wordmark colored', name: 'NumPy' },
+            { icon: 'devicon-pandas-plain-wordmark colored', name: 'Pandas' },
             { icon: 'devicon-matplotlib-plain', name: 'Matplotlib' },
             { icon: 'devicon-seaborn-original', name: 'Seaborn' },
             { icon: 'devicon-plotly-plain-wordmark', name: 'Plotly' },
@@ -47,19 +48,25 @@ class FloatingIconsManager {
             { icon: 'devicon-apacheflink-plain', name: 'Flink' },
 
             // Tools & Technologies
-            { icon: 'devicon-c-plain', name: 'C' },
+            { icon: 'devicon-contao-original', name: 'C' },
             { icon: 'devicon-python-plain colored', name: 'Python' },
             { icon: 'devicon-scala-plain-wordmark colored', name: 'Scala' },
             { icon: 'devicon-bash-plain colored', name: 'Bash' },
             { icon: 'devicon-azuresqldatabase-plain', name: 'SQL' },
             { icon: 'devicon-git-plain colored', name: 'Git' },
             { icon: 'devicon-github-original-wordmark colored', name: 'GitHub' },
-            { icon: 'devicon-googlecloud-plain-wordmark', name: 'GCP' },
+            { icon: 'devicon-googlecloud-plain', name: 'GCP' },
             { icon: 'devicon-amazonwebservices-plain-wordmark', name: 'AWS' },
             { icon: 'fas fa-snowflake', name: 'Snowflake' },
             { icon: 'devicon-docker-plain-wordmark colored', name: 'Docker' },
             { icon: 'devicon-kubernetes-plain colored', name: 'Kubernetes' },
-            { icon: 'devicon-grafana-plain-wordmark', name: 'Grafana' }
+            { icon: 'devicon-grafana-plain-wordmark', name: 'Grafana' },
+            { icon: 'devicon-vscode-plain colored', name: 'VS Code' },
+            { icon: 'devicon-jupyter-plain colored', name: 'Jupyter Notebook' },
+            { icon: 'devicon-pycharm-plain colored', name: 'PyCharm' },
+            { icon: 'devicon-googlecolab-plain colored', name: 'Colab' },
+            { icon: 'devicon-r-plain colored', name: 'R' },
+            { icon: 'devicon-notion-plain colored', name: 'Notion' }
         ];
         
         this.init();
@@ -356,11 +363,6 @@ window.addEventListener('load', initializeFloatingIcons);
 
 
 
-
-
-
-
-
 // -------------- Certificate Section --------------
 const certificateLinks = {
     'Aviatrix_cloud.jpg': 'https://www.credly.com/badges/b2f8b061-fe9f-46d3-b8c9-872d2d541fa7/public_url',
@@ -568,7 +570,6 @@ window.addEventListener('load', () => {
         updateCertificateLink();
     }, 500);
 });
-
 
 
 
