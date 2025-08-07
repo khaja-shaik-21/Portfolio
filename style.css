@@ -10,7 +10,9 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 /* ------- Navigation Part ------- */
 .navbar {
     height: 80px;
