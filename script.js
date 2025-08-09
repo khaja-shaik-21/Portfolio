@@ -1,3 +1,17 @@
+// Dynamically adjust sections to full viewport height
+function adjustSectionHeights() {
+    const sections = document.querySelectorAll('.Header, .About, #Skills, .Projects, #Certificates');
+    const vh = window.innerHeight;
+    sections.forEach(sec => {
+        sec.style.minHeight = vh + 'px';
+    });
+}
+
+window.addEventListener('resize', adjustSectionHeights);
+window.addEventListener('load', adjustSectionHeights);
+
+
+
 // Smooth Scrolling Effects
 (function () {
   const supportsNativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;

@@ -61,7 +61,8 @@ nav ul li a {
 
 /* ------- Header Part ----- */
 .Header {
-    height: 814px;
+    min-height: 100vh;
+    height: auto;
     width: 100%;
     background-image: url("imgs/header.jpg");
     background-size: cover;
@@ -70,7 +71,7 @@ nav ul li a {
     justify-content: right;
 }
 .image-div {
-    height: 814px;
+    height: 800px;
     width: 60%;
     display: flex;
     align-items: end;
@@ -87,7 +88,7 @@ nav ul li a {
     font-weight: 500;
     color: #35374B;
     align-items: flex-start;
-    padding-top: 30%;
+    padding-top: 25%;
 }
 .matter-title {
     font-size: 40px;
@@ -149,7 +150,8 @@ nav ul li a {
 
 /* ------- About Part ------- */
 .About {
-    height: 815px;
+    min-height: 100vh;
+    height: auto;
     width: 100%;
     display: flex;
     background: linear-gradient(to bottom, #96a4c4, #EEF5FF);
@@ -219,7 +221,8 @@ nav ul li a {
 
 /* ------- Skills Part ------- */
 #Skills {
-    height: 815px;
+    min-height: 100vh;
+    height: auto;
     width: 100%;
     background-color: #EEF5FF;
     position: relative;
@@ -404,7 +407,8 @@ nav ul li a {
 
 /* ------- Projects Part ------- */
 .Projects {
-    height: 815px;
+    min-height: 100vh;
+    height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -412,7 +416,7 @@ nav ul li a {
     align-items: center;
     min-height: 100vh;
     background-color: #EEF5FF;
-    padding-top: 1px;
+    padding-top: 30px;
 }
 .Projects-title {
     height: 120px;
@@ -430,7 +434,6 @@ nav ul li a {
 }   
 
 .card-wrapper {
-    padding-top: 2%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -491,7 +494,8 @@ nav ul li a {
 
 /* ------- Certificates Part ------- */
 #Certificates {
-    height: 815px;
+    min-height: 100vh;
+    height: auto;
     width: 100%;
     background: linear-gradient(to bottom, #EEF5FF, white);
     position: relative; 
@@ -753,6 +757,7 @@ nav ul li a {
     margin: 0 auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     min-height: 80vh;
+    padding-top: 30px;
 }
 
 .contact-title {
