@@ -9,6 +9,8 @@
     <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
 
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
     <!-- Website icon -->
     <link rel="icon" href="imgs/letter-k.png">
 
@@ -17,13 +19,11 @@
 
     <!-- Devicon (latest version) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
     
     <!-- Google Fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />    
 </head>
 <body>
     <!-- Navigation Bar Part -->
@@ -45,51 +45,55 @@
     </div>
         
     <!-- Home Section Part -->
-    <div class="Header">
+    <div class="Header" data-aos="fade">
         <!-- Header Content Part -->
         <div class="image-div">
             <div class="profile-image">
                 <img src="imgs/Profile.png" alt="" class="profile-image">
             </div>
         </div>
+
         <div class="matter">
-            <h1 class="matter-title">Hello</h1>
-            <img src="imgs/wave.png" alt="" class="wave-image">
-            <p class="matter-title"> , I am</p>
+            <!-- Greeting with waving hand -->
+            <div class="greeting">
+                <h1 class="matter-title left-text">Hello</h1>
+                <img src="imgs/wave.png" alt="" class="wave-image">
+                <p class="matter-title right-text"> , I am</p>
+            </div>
+
             <h1 class="khaja">SHAIK KHAJA</h1>
             <p class="matter-sub-title">AI/ML Enthusiast</p>
+
+            <!-- Social Media -->
             <div class="footer-icons">
-                <ul>    
+                <ul>
                     <li>
-                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/shaik-khaja21/" target="_blank">
                             <i class="fab fa-linkedin" style="font-size:30px; color: black;"></i>
-                        </a> 
+                        </a>
                     </li>
                     <li>
-                        <!-- GitHub -->
                         <a href="https://github.com/khaja-shaik-21" target="_blank">
                             <i class="fab fa-github" style="font-size:30px; color: black;"></i>
                         </a>
                     </li>
                     <li>
-                        <!-- Instagram -->
                         <a href="https://www.instagram.com/khaja___21/" target="_blank">
                             <i class="fab fa-instagram" style="font-size:30px; color: black;"></i>
                         </a>
                     </li>
-                </ul>      
+                </ul>
             </div>
+
             <!-- Resume -->
             <div class="download-btn">
                 <a href="https://1drv.ms/w/c/b4623af99c4e7a32/EeDfA-CtsPBJhLltV9O4vn4BIE92mo26HQEclvS8-FcYGg" target="_blank">View My Resume</a>
             </div>
-            
-        </div>    
+        </div>
     </div>
 
     <!-- About Part -->
-    <div class="About" id="About">
+    <div class="About" id="About" data-aos="fade">
         <div class="About-img">
             <img src="imgs/profile_img2.jpg" alt="">
         </div>
@@ -104,20 +108,36 @@
                     <div class="point-item"><div class="dot"></div></div>
                 </div>
                 <div class="About-matter">
-                    <p>Completed Master's Degree specializing in AI/ML at KL University, Vaddeswaram, with a stellar academic record (CGPA: 8.85).</p>
-                    <br>
-                    <br>
-                    <p>Completed my  Bachelor degree in Computer Science from Andhra Loyola College Vijyawada (CGPA: 6.45)</p>
-                    <br>
-                    <br>
-                    <p>Excelled in my Intermediate MPC and SSC studies with CGPAs of 8.5 and 9.2 respectively.</p>
+                <div class="reveal-text">
+                    <p class="text-shine">
+                    Completed Master's Degree specializing in AI/ML at KL University, Vaddeswaram, 
+                    with a stellar academic record (CGPA: 8.85).
+                    </p>
+                </div>
+
+                <br><br>
+
+                <div class="reveal-text">
+                    <p class="text-shine">
+                    Completed my Bachelor degree in Computer Science from Andhra Loyola College, 
+                    Vijayawada (CGPA: 6.45)
+                    </p>
+                </div>
+
+                <br>
+
+                <div class="reveal-text">
+                    <p class="text-shine">
+                    Excelled in my Intermediate MPC and SSC studies with CGPAs of 8.5 and 9.2 respectively.
+                    </p>
+                </div>
                 </div>
             </div> 
         </div> 
     </div>
 
     <!-- Skills Part -->
-    <div id="Skills">
+    <div id="Skills" data-aos="fade">
         <div class="skill-title">
             <h1>Tech Stack & Tools</h1>
         </div>
@@ -144,9 +164,6 @@
                     <p>Plotly, Scikit-learn</p>
                     <p></p>
                     <p>Tablue, Power BI, Excel</p>
-                    <!-- <p>Data Modeling, Data Warehousing, Data Serialization & APIs, Data Governance & Quality</p> -->
-                    <!-- <p>ETL / ELT Tools : Apache Airflow, NiFi, Talend, dbt, Power BI</p> -->
-                    <!-- <p>Big Data : Hadoop, Spark(PySpark, SparkSQL), Kafka, Hive, Flink</p> -->
                 </div>
             </div>
             <div class="other">
@@ -158,7 +175,6 @@
                     <p>Data Structures & Algorithms</p>
                     <p>Git, GitHub</p>
                     <p>GCP, AWS</p>
-                    <!-- <p>Snowflake, Kubernetes, Grafana, , Scala, Bash</p> -->
                     <p>VS Code, Jupyter Notebook, PyCharm, Colab</p>
                 </div>
             </div>
@@ -169,7 +185,7 @@
     </div>
 
     <!-- Projects Part -->
-    <div class="Projects" id="Projects">
+    <div class="Projects" id="Projects" data-aos="fade">
         <div class="Projects-title">
             <h1>AI & ML Projects</h1>
         </div>
@@ -186,11 +202,7 @@
                         <div class="download-btn">
                             <a href="https://github.com/khaja-shaik-21/Blood-Group-Detection-Using-Fingerprint.git" target="_blank">GitHub Repo</a>
                         </div>
-                        <!-- <div class="download-btn">
-                            <a href="" target="_blank">Live Demo</a>
-                        </div> -->
                     </div>
-                    
                 </li>
                 <li class="card-item">
                     <div class="card-link" target="_blank">
@@ -203,18 +215,14 @@
                         <div class="download-btn">
                             <a href="https://github.com/khaja-shaik-21/Heart-Disease-Prediction.git" target="_blank">GitHub Repo</a>
                         </div>
-                        <!-- <div class="download-btn">
-                            <a href="" target="_blank">Live Demo</a>
-                        </div> -->
                     </div>
                 </li>
             </ul>
         </div>
     </div>
 
-
     <!-- Certifications Part -->
-    <div class="gallery" id="Certificates">
+    <div class="gallery" id="Certificates" data-aos="fade">
         <div class="gallery-title">
             <h1>Professional Certifications</h1>
         </div>
@@ -226,7 +234,6 @@
             <img src="imgs/certificates/Introduction to AI_page-0001.jpg" alt="Introduction to AI Certificate" data-index="5" class="gallery-item gallery-item-5">
             <img src="imgs/certificates/Introduction to NLP_page-0001.jpg" alt="Introduction to NLP Certificate" data-index="6" class="gallery-item gallery-item-6">
             
-            <!-- MOVED: Link Icon - Now inside the gallery div -->
             <div class="certificate-link-wrapper">
                 <div class="certificate-link-icon" id="certificateLink">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -239,9 +246,18 @@
     </div>
     
     <!-- Contact Part -->
-     <div id="Contact">
+    <div id="Contact" data-aos="fade">
+        <div class="contact-title">
+            <div class="main-contact-title">
+                <h1>Impressed..?</h1>
+            </div>
+            <div class="sub-contact-title">
+                <h4>From concepts to code, from ideas to impact — you've seen what I had done. Contact me to discuss your ideas and I can help you to bring them on your Desk.</h4>
+            </div>
+        </div>
+
         <div class="contact-form">
-            <h2 style="font-size: 35px;">Contact Me Here</h2>
+            <h2>Contact Me Here</h2>
             <form action="https://formspree.io/f/xjkynddq" method="POST" id="contactForm">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -260,18 +276,26 @@
                 </div>
             </form>
         </div>
-     </div>
-    
+    </div>
 
     <!-- Footer Part -->
     <footer>
         <div class="footer-container">
             <p>Copyright &copy; 2025 Shaik Khaja. All Rights Reserved.</p>
         </div>
-       
     </footer>
 
     <!-- Javascript Link -->
-     <script src="script.js"></script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out',
+            once: true,
+            offset: 80
+        });
+    </script>
+
 </body>
 </html>
