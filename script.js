@@ -483,24 +483,128 @@ if (document.readyState === 'loading') {
 }
 
 // Contact Form
-const form = document.getElementById('contactForm');
+// Simple Contact Form with Success Popup
+class ContactFormHandler {
+    constructor() {
+        this.form = document.getElementById('contactForm');
+        this.successModal = document.getElementById('successModal');
+        this.modalOverlay = document.getElementById('modalOverlay');
+        this.okButton = document.getElementById('okButton');
+        
+        this.bindEvents();
+    }
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
+    bindEvents() {
+        // Form submission event
+        this.form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await this.handleFormSubmission();
+        });
 
-    const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
+        // OK button click event
+        this.okButton.addEventListener('click', () => {
+            this.hideSuccessModal();
+        });
+
+        // Close modal on overlay click
+        this.modalOverlay.addEventListener('click', () => {
+            this.hideSuccessModal();
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.successModal.classList.contains('show')) {
+                this.hideSuccessModal();
+            }
+        });
+    }
+
+    async handleFormSubmission() {
+        const submitButton = this.form.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        // Show loading state immediately
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        const formData = new FormData(this.form);
+
+        try {
+            // Add timeout to prevent hanging
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+            
+            const response = await fetch(this.form.action, {
+                method: this.form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                },
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (response.ok) {
+                // Success - show the nice popup immediately
+                this.showSuccessModal();
+                this.form.reset();
+            } else {
+                // Error - show simple alert
+                alert('Oops! There was a problem submitting your Contact form.');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            if (error.name === 'AbortError') {
+                alert('Request timed out. Please try again.');
+            } else {
+                alert('Oops! There was a problem submitting your Contact form.');
+            }
+        } finally {
+            // Reset button state
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
         }
-    });
+    }
 
-    if (response.ok) {
-        alert("Thank you! I'll get back to you as soon as possible.");
-        form.reset();
-    } else {
-        alert('Oops! There was a problem submitting your Contact form.');
+    showSuccessModal() {
+        // Prevent body scroll and width changes
+        document.body.classList.add('modal-open');
+        
+        // Show success popup with smooth animation
+        this.modalOverlay.classList.add('show');
+        this.successModal.classList.add('show');
+    }
+
+    hideSuccessModal() {
+        // Remove body scroll prevention
+        document.body.classList.remove('modal-open');
+        
+        // Hide success popup
+        this.modalOverlay.classList.remove('show');
+        this.successModal.classList.remove('show');
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new ContactFormHandler();
+});
+
+// Optional: Add button hover effects (from your original requirements)
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.form-group button');
+    
+    if (button) {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+            this.style.transition = 'all 0.3s ease';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
     }
 });
