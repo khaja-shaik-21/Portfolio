@@ -475,7 +475,7 @@ const certificateLinks = {
     'Python_HackerRank.png': 'https://www.hackerrank.com/certificates/iframe/4fee9a38240c',
     'Introduction to AI_page-0001.jpg': '#',
     'Introduction to NLP_page-0001.jpg': '#',
-    'SQL_Hacker_Rank_Basics.jpg': 'https://www.hackerrank.com/certificates/iframe/4fee9a38240c'
+    'SQL_Hacker_Rank_Basics.jpg': 'https://www.hackerrank.com/certificates/iframe/1a4dbbabc8e9'
 };
 
 const galleryContainer = document.querySelector('.gallery-container');
