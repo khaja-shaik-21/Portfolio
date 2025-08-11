@@ -241,6 +241,7 @@ class FloatingIconsManager {
             { icon: 'devicon-html5-plain colored', name: 'HTML' },
             { icon: 'devicon-css3-plain colored', name: 'CSS' },
             { icon: 'devicon-javascript-plain colored', name: 'JavaScript' },
+            { icon: 'devicon-react-original colored', name: 'React' },
             { icon: 'devicon-django-plain', name: 'Django' },
             { icon: 'devicon-flask-original-wordmark colored', name: 'Flask' },
             { icon: 'devicon-mysql-plain-wordmark colored', name: 'MySQL' },
