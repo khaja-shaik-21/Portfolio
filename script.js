@@ -474,7 +474,8 @@ const certificateLinks = {
     'Google_Cloud_Fundamentals.png': 'https://www.cloudskillsboost.google/public_profiles/9e676916-e61f-4c0e-a880-fac5df24540b/badges/15555915',
     'Python_HackerRank.png': 'https://www.hackerrank.com/certificates/iframe/4fee9a38240c',
     'Introduction to AI_page-0001.jpg': '#',
-    'Introduction to NLP_page-0001.jpg': '#'
+    'Introduction to NLP_page-0001.jpg': '#',
+    'SQL_Hacker_Rank_Basics.jpg': 'https://www.hackerrank.com/certificates/iframe/4fee9a38240c'
 };
 
 const galleryContainer = document.querySelector('.gallery-container');
