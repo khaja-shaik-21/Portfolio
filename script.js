@@ -1,4 +1,174 @@
-// Dynamically adjust sections to full viewport height
+// ========================================
+// MODERN PILL NAVIGATION SYSTEM
+// ========================================
+class ModernNavigation {
+    constructor() {
+        this.navLinks = document.querySelectorAll('nav ul li a');
+        this.highlight = document.querySelector('.nav-highlight');
+        this.sections = document.querySelectorAll('[id]');
+        this.currentSection = '';
+        this.isScrolling = false;
+        
+        this.init();
+    }
+
+    init() {
+        this.setupClickHandlers();
+        this.setupScrollHandler();
+        this.setInitialHighlight();
+        this.setupResizeHandler();
+        this.setupLogoHandler();
+    }
+
+    setupLogoHandler() {
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.scrollToTop();
+                this.setActiveSection('home');
+            });
+        }
+    }
+
+    scrollToTop() {
+        this.isScrolling = true;
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        setTimeout(() => {
+            this.isScrolling = false;
+        }, 1000);
+    }
+
+    setupClickHandlers() {
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                this.scrollToSection(targetId);
+                this.setActiveSection(targetId);
+            });
+        });
+    }
+
+    setupScrollHandler() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    if (!this.isScrolling) {
+                        this.updateActiveSection();
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    setupResizeHandler() {
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (this.currentSection !== 'home') {
+                    const activeLink = document.querySelector('nav ul li.active a');
+                    if (activeLink) {
+                        this.moveHighlight(activeLink);
+                    }
+                }
+            }, 100);
+        });
+    }
+
+    updateActiveSection() {
+        const scrollPosition = window.scrollY + 100;
+        let activeSection = '';
+
+        if (scrollPosition <= 150) {
+            activeSection = 'home';
+        } else {
+            this.sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                const navItem = document.querySelector(`a[data-section="${sectionId}"]`);
+                
+                if (navItem && scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    activeSection = sectionId;
+                }
+            });
+        }
+
+        if (activeSection && this.currentSection !== activeSection) {
+            this.setActiveSection(activeSection);
+        }
+    }
+
+    setActiveSection(sectionId) {
+        this.currentSection = sectionId;
+        
+        this.navLinks.forEach(link => {
+            link.parentElement.classList.remove('active');
+        });
+        
+        if (sectionId === 'home') {
+            this.highlight.classList.remove('active');
+            this.highlight.style.opacity = '0';
+        } else {
+            const activeLink = document.querySelector(`a[data-section="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.parentElement.classList.add('active');
+                this.moveHighlight(activeLink);
+            }
+        }
+    }
+
+    moveHighlight(activeLink) {
+        if (!activeLink || !this.highlight) return;
+
+        const linkRect = activeLink.getBoundingClientRect();
+        const navRect = activeLink.closest('nav ul').getBoundingClientRect();
+        
+        const left = linkRect.left - navRect.left;
+        const width = linkRect.width;
+        const height = linkRect.height - 8;
+        
+        this.highlight.style.left = `${left}px`;
+        this.highlight.style.width = `${width}px`;
+        this.highlight.style.height = `${height}px`;
+        this.highlight.style.opacity = '1';
+        this.highlight.classList.add('active');
+    }
+
+    setInitialHighlight() {
+        this.setActiveSection('home');
+    }
+
+    scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            this.isScrolling = true;
+            
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            setTimeout(() => {
+                this.isScrolling = false;
+            }, 1000);
+        }
+    }
+}
+
+// ========================================
+// VIEWPORT HEIGHT ADJUSTMENT SYSTEM
+// ========================================
 function adjustSectionHeights() {
     const sections = document.querySelectorAll('.Header, .About, #Skills, .Projects, #Certificates');
     const vh = window.innerHeight;
@@ -7,56 +177,55 @@ function adjustSectionHeights() {
     });
 }
 
-window.addEventListener('resize', adjustSectionHeights);
-window.addEventListener('load', adjustSectionHeights);
-
-
-
-// Smooth Scrolling Effects
+// ========================================
+// SMOOTH SCROLLING EFFECTS
+// ========================================
 (function () {
-  const supportsNativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+    const supportsNativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;
 
-  document.addEventListener('click', function (e) {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
 
-    const hash = link.getAttribute('href');
-    if (hash === '#' || hash.length < 2) return;
+        const hash = link.getAttribute('href');
+        if (hash === '#' || hash.length < 2) return;
 
-    const target = document.getElementById(hash.slice(1));
-    if (!target) return;
+        const target = document.getElementById(hash.slice(1));
+        if (!target) return;
 
-    e.preventDefault();
+        e.preventDefault();
 
-    if (supportsNativeSmoothScroll && typeof target.scrollIntoView === 'function') {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
+        if (supportsNativeSmoothScroll && typeof target.scrollIntoView === 'function') {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
 
-    // JavaScript fallback
-    const startY = window.pageYOffset;
-    const targetY = startY + target.getBoundingClientRect().top;
-    const duration = 500;
-    const startTime = performance.now();
+        // JavaScript fallback for older browsers
+        const startY = window.pageYOffset;
+        const targetY = startY + target.getBoundingClientRect().top;
+        const duration = 500;
+        const startTime = performance.now();
 
-    function easeInOutQuad(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    }
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
 
-    function step(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = easeInOutQuad(progress);
-      const currentY = startY + (targetY - startY) * eased;
-      window.scrollTo(0, currentY);
-      if (progress < 1) requestAnimationFrame(step);
-    }
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeInOutQuad(progress);
+            const currentY = startY + (targetY - startY) * eased;
+            window.scrollTo(0, currentY);
+            if (progress < 1) requestAnimationFrame(step);
+        }
 
-    requestAnimationFrame(step);
-  }, { passive: false });
+        requestAnimationFrame(step);
+    }, { passive: false });
 })();
 
-// Floating Icons Animation System
+// ========================================
+// FLOATING TECH ICONS ANIMATION SYSTEM
+// ========================================
 class FloatingIconsManager {
     constructor() {
         this.container = null;
@@ -295,20 +464,9 @@ class FloatingIconsManager {
     }
 }
 
-// Initialize floating icons
-function initializeFloatingIcons() {
-    if (typeof window.floatingIconsManager === 'undefined') {
-        window.floatingIconsManager = new FloatingIconsManager();
-    }
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeFloatingIcons);
-} else {
-    initializeFloatingIcons();
-}
-
-// Certificate Section
+// ========================================
+// CERTIFICATE CAROUSEL GALLERY SYSTEM
+// ========================================
 const certificateLinks = {
     'Aviatrix_cloud.jpg': 'https://www.credly.com/badges/b2f8b061-fe9f-46d3-b8c9-872d2d541fa7/public_url',
     'Python_Udemy.jpg': 'https://www.udemy.com/certificate/UC-557254a0-542b-4267-b52d-91782195d9af/', 
@@ -384,6 +542,9 @@ class Carousel {
     }
 
     setControls() {
+        // Clear any existing controls first to prevent duplicates
+        galleryControlsContainer.innerHTML = '';
+        
         this.carouselControls.forEach(control => {
             const button = document.createElement('button');
             button.className = `gallery-controls-${control}`;
@@ -465,25 +626,9 @@ class Carousel {
     }
 }
 
-function initializeCarousel() {
-    if (galleryContainer && galleryItems.length > 0) {
-        const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls);
-        exampleCarousel.init();
-        
-        setTimeout(() => {
-            updateCertificateLink();
-        }, 200);
-    }
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeCarousel);
-} else {
-    initializeCarousel();
-}
-
-// Contact Form
-// Simple Contact Form with Success Popup
+// ========================================
+// CONTACT FORM WITH SUCCESS MODAL SYSTEM
+// ========================================
 class ContactFormHandler {
     constructor() {
         this.form = document.getElementById('contactForm');
@@ -495,23 +640,19 @@ class ContactFormHandler {
     }
 
     bindEvents() {
-        // Form submission event
         this.form.addEventListener('submit', async (e) => {
             e.preventDefault();
             await this.handleFormSubmission();
         });
 
-        // OK button click event
         this.okButton.addEventListener('click', () => {
             this.hideSuccessModal();
         });
 
-        // Close modal on overlay click
         this.modalOverlay.addEventListener('click', () => {
             this.hideSuccessModal();
         });
 
-        // Close modal on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.successModal.classList.contains('show')) {
                 this.hideSuccessModal();
@@ -523,16 +664,14 @@ class ContactFormHandler {
         const submitButton = this.form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         
-        // Show loading state immediately
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
         
         const formData = new FormData(this.form);
 
         try {
-            // Add timeout to prevent hanging
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
             
             const response = await fetch(this.form.action, {
                 method: this.form.method,
@@ -546,11 +685,9 @@ class ContactFormHandler {
             clearTimeout(timeoutId);
 
             if (response.ok) {
-                // Success - show the nice popup immediately
                 this.showSuccessModal();
                 this.form.reset();
             } else {
-                // Error - show simple alert
                 alert('Oops! There was a problem submitting your Contact form.');
             }
         } catch (error) {
@@ -561,38 +698,56 @@ class ContactFormHandler {
                 alert('Oops! There was a problem submitting your Contact form.');
             }
         } finally {
-            // Reset button state
             submitButton.textContent = originalText;
             submitButton.disabled = false;
         }
     }
 
     showSuccessModal() {
-        // Prevent body scroll and width changes
         document.body.classList.add('modal-open');
-        
-        // Show success popup with smooth animation
         this.modalOverlay.classList.add('show');
         this.successModal.classList.add('show');
     }
 
     hideSuccessModal() {
-        // Remove body scroll prevention
         document.body.classList.remove('modal-open');
-        
-        // Hide success popup
         this.modalOverlay.classList.remove('show');
         this.successModal.classList.remove('show');
     }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new ContactFormHandler();
-});
+// ========================================
+// INITIALIZATION AND EVENT HANDLERS
+// ========================================
 
-// Optional: Add button hover effects (from your original requirements)
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize Navigation System
+function initializeNav() {
+    if (document.querySelector('nav ul li a') && document.querySelector('.nav-highlight')) {
+        window.modernNav = new ModernNavigation();
+    }
+}
+
+// Initialize Floating Icons System
+function initializeFloatingIcons() {
+    if (typeof window.floatingIconsManager === 'undefined') {
+        window.floatingIconsManager = new FloatingIconsManager();
+    }
+}
+
+// Initialize Certificate Carousel
+function initializeCarousel() {
+    if (galleryContainer && galleryItems.length > 0) {
+        const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls);
+        exampleCarousel.init();
+        
+        setTimeout(() => {
+            updateCertificateLink();
+        }, 200);
+    }
+}
+
+// Contact Form Button Hover Effects
+function setupContactButtonEffects() {
     const button = document.querySelector('.form-group button');
     
     if (button) {
@@ -607,4 +762,30 @@ document.addEventListener('DOMContentLoaded', () => {
             this.style.boxShadow = 'none';
         });
     }
+}
+
+// DOM Content Loaded Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    initializeNav();
+    initializeFloatingIcons();
+    initializeCarousel();
+    new ContactFormHandler();
+    setupContactButtonEffects();
 });
+
+// Alternative initialization if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initializeNav();
+        initializeFloatingIcons();
+        initializeCarousel();
+    });
+} else {
+    initializeNav();
+    initializeFloatingIcons();
+    initializeCarousel();
+}
+
+// Window Event Listeners
+window.addEventListener('resize', adjustSectionHeights);
+window.addEventListener('load', adjustSectionHeights);

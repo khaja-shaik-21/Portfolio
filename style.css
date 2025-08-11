@@ -1,3 +1,6 @@
+/* ========================================
+   GLOBAL STYLES & RESET
+   ======================================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,61 +8,185 @@
     font-weight: 200;
     font-style: normal;
 }
+
 body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
-/* ------- Navigation Part ------- */
+/* ========================================
+   MODERN PILL NAVIGATION BAR
+   ======================================== */
 .navbar {
     height: 80px;
     width: 100%;
     position: fixed;
     display: flex;
     z-index: 1000;
+    padding-top: 20px;
 }
+
 .name {
     font-size: 2rem;
     height: 80px;
     width: 35%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    padding-left: 140px;
+    align-items: center;
 }
+
 .logo {
     color: black;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
+
+.logo:hover {
+    opacity: 0.8;
+}
+
 .nav {
     height: 80px;
-    width: 75%;
-    padding-right: 9%;
+    width: 65%;
     display: flex;
-    justify-content: right;
-    align-items: flex-end;
+    align-items: center;
 }
+
+.nav-container {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding-left: 15px;
     display: flex;
-    justify-content: center;
-    gap: 1.8rem;
-}
-nav ul li {
-    margin: 0 1.6rem;
-}
-nav ul li a {
-    color: black;
-    text-decoration: none;
-    font-size: 1.25rem;
+    position: relative;
+    gap: 40px;
 }
 
-/* ------- Header Part ----- */
+nav ul li {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+
+nav ul li a {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    display: block;
+    border-radius: 25px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+nav ul li a:hover {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+/* Animated Pill Highlight */
+.nav-highlight {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    top: 5px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+}
+
+.nav-highlight.active {
+    opacity: 1;
+}
+
+nav ul li.active a {
+    color: white;
+    font-weight: 600;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .name {
+        width: 100%;
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .nav-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    nav ul {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .nav-container {
+        padding: 5px;
+    }
+
+    nav ul li a {
+        text-align: center;
+        padding: 12px 16px;
+    }
+}
+
+/* Optional Light Theme */
+.navbar.light-theme .nav-container {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar.light-theme nav ul li a {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar.light-theme .nav-highlight {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* ========================================
+   HERO/LANDING SECTION
+   ======================================== */
 .Header {
     min-height: 100vh;
     height: auto;
@@ -70,6 +197,7 @@ nav ul li a {
     align-items: center;
     justify-content: right;
 }
+
 .image-div {
     height: 800px;
     width: 60%;
@@ -77,11 +205,13 @@ nav ul li a {
     align-items: end;
     justify-content: end;
 }
+
 .profile-image {
     height: 450px;
     border-radius: 50%;
     padding-bottom: 15%;
 }
+
 .matter {
     height: 525px;
     width: 50%;
@@ -90,26 +220,30 @@ nav ul li a {
     align-items: flex-start;
     padding-top: 25%;
 }
+
 .matter-title {
     font-size: 40px;
     color: #35374B;
     display: inline-block;
 }
+
 .wave-image {
     height: 70px;
     width: 70px;
     transform: rotate(20deg);
     display: inline;
 }
+
 .khaja {
     font-size: 60px;
 }
+
 .matter-sub-title {
     font-size: 25px;
     color: #35374B;
 }
 
-/* Social Media */
+/* Social Media Icons */
 .footer-icons ul {
     list-style: none;
     margin: 0;
@@ -117,12 +251,13 @@ nav ul li a {
     display: flex;
     gap: 1.5rem;
 }
+
 .footer-icons ul li a {
     text-decoration: none;
     font-size: 0.5rem;
 }
 
-/* Download Button */
+/* Action Button Styles */
 .download-btn {
     color: black;
     display: inline-block;
@@ -136,10 +271,12 @@ nav ul li a {
     background-color: transparent;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .download-btn:hover {
     background-color: #000000;
     color: white;
 }
+
 .download-btn a {
     text-decoration: none;
     color: inherit;
@@ -148,7 +285,9 @@ nav ul li a {
     height: 100%;
 }
 
-/* ------- About Part ------- */
+/* ========================================
+   ABOUT ME SECTION
+   ======================================== */
 .About {
     min-height: 100vh;
     height: auto;
@@ -156,6 +295,7 @@ nav ul li a {
     display: flex;
     background: linear-gradient(to bottom, #96a4c4, #EEF5FF);
 }
+
 .About-img {
     height: 715px;
     width: 50%;
@@ -163,17 +303,20 @@ nav ul li a {
     display: flex;
     align-items: center;
 }
+
 .About-img img {
     height: 450px;
     border-radius: 50%;
     object-fit: contain;
     padding-left: 23%;
 }
+
 .About-content {
     height: 715px;
     width: 60%;
     padding-top: 5%;
 }
+
 .About-title {
     height: 100px;
     width: 100%;
@@ -181,6 +324,7 @@ nav ul li a {
     color: #35374B;
     padding-top: 20%;
 }
+
 .content {
     height: 600px;
     width: 100%;
@@ -191,16 +335,20 @@ nav ul li a {
     align-items: flex-start;
     max-width: 800px;
 }
+
+/* Timeline Dots & Lines */
 .points {
     margin-right: 20px;
     padding-top: 10px;
 }
+
 .points .point-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
 }
+
 .points .dot {
     width: 10px;
     height: 10px;
@@ -208,18 +356,22 @@ nav ul li a {
     border-radius: 50%;
     margin-bottom: 20px;
 }
+
 .points .line {
     width: 2px;
     height: 20px;
     padding-top: 30px;
     background-color: black;
 }
+
 .About-matter {
     height: 600px;
     width: 90%;
 }
 
-/* ------- Skills Part ------- */
+/* ========================================
+   SKILLS & TECHNOLOGIES SECTION
+   ======================================== */
 #Skills {
     min-height: 100vh;
     height: auto;
@@ -259,6 +411,7 @@ nav ul li a {
     z-index: 2;
 }
 
+/* Skill Cards */
 .Frontend, .other {
     height: 400px;
     width: 23%;
@@ -267,7 +420,8 @@ nav ul li a {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
-.Ai{
+
+.Ai {
     height: 500px;
     width: 30%;
     border-style: solid;
@@ -292,7 +446,8 @@ nav ul li a {
     color: aliceblue;
     border-radius: 10px 10px 0 0;
 }
-.Ai-img{
+
+.Ai-img {
     height: 150px;
     width: 100%;
     display: flex;
@@ -303,6 +458,7 @@ nav ul li a {
     color: aliceblue;
     border-radius: 10px 10px 0 0;
 }
+
 .tech-list {
     text-align: center;
     font-size: large;
@@ -314,7 +470,9 @@ nav ul li a {
     color: #35374B;
 }
 
-/* ------- Floating Icons Styles ------- */
+/* ========================================
+   ANIMATED FLOATING TECH ICONS
+   ======================================== */
 .floating-icons-container {
     position: absolute;
     top: 0;
@@ -352,6 +510,7 @@ nav ul li a {
     animation: gentleFloat 6s ease-in-out infinite;
 }
 
+/* Floating Animation Keyframes */
 @keyframes gentleFloat {
     0%, 100% {
         transform: scale(1) translateY(0px) rotate(0deg);
@@ -405,7 +564,9 @@ nav ul li a {
     animation: fadeScaleOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* ------- Projects Part ------- */
+/* ========================================
+   PROJECTS PORTFOLIO SECTION
+   ======================================== */
 .Projects {
     min-height: 100vh;
     height: auto;
@@ -418,6 +579,7 @@ nav ul li a {
     background-color: #EEF5FF;
     padding-top: 30px;
 }
+
 .Projects-title {
     height: 120px;
     width: 100%;
@@ -427,28 +589,33 @@ nav ul li a {
     justify-content: center;
     margin-top: 0;
 }
+
 .Projects-title h1 {
     font-size: 30px;
     color: #35374B;
     font-weight: 600;
-}   
+}
 
 .card-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
+
+/* Project Cards */
 .card-list {
     display: flex;
     gap: 50px;
     justify-content: center;
     align-items: flex-end;
     width: 100%;
-    padding-bottom: 60px; 
+    padding-bottom: 60px;
 }
+
 .card-list .card-item {
     list-style: none;
 }
+
 .card-list .card-item .card-link {
     width: 350px;
     height: 500px;
@@ -461,16 +628,19 @@ nav ul li a {
     box-shadow: 0 10px 10px rgb(0, 0, 0, 0.05);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .card-list .card-item .card-link:hover {
     border-color: #282a3a;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 .card-list .card-link .card-image {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 10px;
 }
+
 .card-list .card-link .badge {
     color: #0056b3;
     font-size: 0.95rem;
@@ -482,31 +652,35 @@ nav ul li a {
     border-radius: 50px;
     display: inline-block;
 }
+
 .card-list .card-link .card-title {
     font-size: 1.5rem;
     color: black;
     font-weight: 600;
 }
+
 .card-desc {
     color: black;
     font-family: "DM Serif Text", serif;
 }
 
-/* ------- Certificates Part ------- */
+/* ========================================
+   PROFESSIONAL CERTIFICATIONS GALLERY
+   ======================================== */
 #Certificates {
     min-height: 100vh;
     height: auto;
     width: 100%;
     background: linear-gradient(to bottom, #EEF5FF, white);
-    position: relative; 
-    z-index: 1; 
+    position: relative;
+    z-index: 1;
 }
 
 .gallery {
     height: 615px;
     width: 100%;
     align-items: center;
-    position: relative; 
+    position: relative;
 }
 
 .gallery-title {
@@ -524,6 +698,7 @@ nav ul li a {
     font-weight: 600;
 }
 
+/* Certificate Gallery Container */
 .gallery-container {
     align-items: end;
     display: flex;
@@ -533,6 +708,7 @@ nav ul li a {
     position: relative;
 }
 
+/* Gallery Items Positioning */
 .gallery-item {
     height: 300px;
     opacity: 0;
@@ -572,8 +748,8 @@ nav ul li a {
     height: 330px;
     width: 500px;
     z-index: 2;
-    position: relative; 
-    cursor: pointer; 
+    position: relative;
+    cursor: pointer;
 }
 
 .gallery-item-4 {
@@ -589,23 +765,24 @@ nav ul li a {
     transform: translateX(-50%);
 }
 
+/* Certificate Link Icon */
 .certificate-link-wrapper {
     position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 500px;
-    height: 330px; 
+    height: 330px;
     z-index: 10;
     pointer-events: none;
-    margin-top: -130px; 
+    margin-top: -130px;
 }
 
 .certificate-link-icon {
     position: absolute;
-    bottom: 10px; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 50px;
     height: 50px;
     background: rgba(255, 255, 255, 0.95);
@@ -630,19 +807,19 @@ nav ul li a {
 }
 
 .certificate-link-wrapper:hover .certificate-link-icon {
-    bottom: 10px; 
-    left: 50%; 
-    transform: translateX(-50%) scale(1.2) translateY(-3px); 
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) scale(1.2) translateY(-3px);
     background: linear-gradient(135deg, #35374B, #2c2e45);
-    width: 80px; 
-    height:80px;
+    width: 80px;
+    height: 80px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     border: 3px solid rgba(255, 255, 255, 0.8);
 }
 
 .certificate-link-wrapper:hover .certificate-link-icon svg {
     fill: white;
-    width: 28px; 
+    width: 28px;
     height: 28px;
 }
 
@@ -662,6 +839,7 @@ nav ul li a {
     z-index: 5;
 }
 
+/* Icon Animation */
 @keyframes iconPulse {
     0%, 100% { 
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -681,6 +859,7 @@ nav ul li a {
     animation: none;
 }
 
+/* Gallery Controls */
 .gallery-controls {
     display: flex;
     justify-content: center;
@@ -748,7 +927,9 @@ nav ul li a {
     right: -40px;
 }
 
-/* ------- Contact Part ------- */
+/* ========================================
+   CONTACT FORM SECTION
+   ======================================== */
 #Contact {
     display: flex;
     justify-content: center;
@@ -769,9 +950,11 @@ nav ul li a {
     width: 100%;
     max-width: 470px;
 }
+
 .contact-form:hover {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
 }
+
 .contact-form h2 {
     margin-bottom: 25px;
     font-size: 28px;
@@ -827,7 +1010,7 @@ nav ul li a {
     transform: translateY(-2px);
 }
 
-/* Responsive */
+/* Responsive Contact Form */
 @media (max-width: 768px) {
     #Contact {
         flex-direction: column;
@@ -839,6 +1022,9 @@ nav ul li a {
     }
 }
 
+/* ========================================
+   SUCCESS MODAL & OVERLAY
+   ======================================== */
 .success-modal {
     position: fixed;
     top: 50%;
@@ -931,7 +1117,7 @@ body.modal-open {
     transform: translateY(-2px);
 }
 
-/* Modal animations */
+/* Modal Animation Keyframes */
 @keyframes modalAppear {
     0% {
         opacity: 0;
@@ -971,7 +1157,9 @@ body.modal-open {
     }
 }
 
-/* --------Footer Section-------------- */
+/* ========================================
+   FOOTER SECTION
+   ======================================== */
 .footer-container {
     height: 30px;
     width: 100%;

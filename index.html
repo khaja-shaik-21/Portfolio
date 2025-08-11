@@ -8,47 +8,42 @@
     <meta name="description" content="Portfolio of Khaja Shaik, AI Engineer showcasing projects in Machine Learning, Data Science, and Web Development.">
     <title>SHAIK KHAJA</title>
     
-    <!-- CSS Link -->
+    <!-- External Stylesheets -->
     <link rel="stylesheet" href="style.css">
-
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-    <!-- Website icon -->
     <link rel="icon" href="imgs/letter-k.png">
-
-    <!-- Font Awesome (latest version) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Devicon (latest version) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
-    <!-- Google Fonts Link -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation Bar Part -->
+    <!-- Modern Pill Navigation Bar -->
     <div class="navbar">
         <div class="name">
             <p><a href="#" class="logo">KHAJA</a></p>
         </div>
         <div class="nav">
-            <nav>
-                <ul>
-                    <li><a href="#About">About</a></li>
-                    <li><a href="#Skills">Skills</a></li>
-                    <li><a href="#Projects">Projects</a></li>
-                    <li><a href="#Certificates">Certifications</a></li>
-                    <li class="contact"><a href="#Contact">Contact</a></li>
-                </ul>
-            </nav> 
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="#About" data-section="About">About</a></li>
+                        <li><a href="#Skills" data-section="Skills">Skills</a></li>
+                        <li><a href="#Projects" data-section="Projects">Projects</a></li>
+                        <li><a href="#Certificates" data-section="Certificates">Certifications</a></li>
+                        <li class="contact"><a href="#Contact" data-section="Contact">Contact</a></li>
+                    </ul>
+                    <div class="nav-highlight"></div>
+                </nav>
+            </div>
         </div>  
     </div>
         
-    <!-- Home Section Part -->
+    <!-- Hero/Landing Section -->
     <div class="Header" data-aos="fade">
-        <!-- Header Content Part -->
         <div class="image-div">
             <div class="profile-image">
                 <img src="imgs/Profile.png" alt="" class="profile-image">
@@ -56,7 +51,6 @@
         </div>
 
         <div class="matter">
-            <!-- Greeting with waving hand -->
             <div class="greeting">
                 <h1 class="matter-title left-text">Hello</h1>
                 <img src="imgs/wave.png" alt="" class="wave-image">
@@ -66,7 +60,7 @@
             <h1 class="khaja">SHAIK KHAJA</h1>
             <p class="matter-sub-title">AI/ML Enthusiast</p>
 
-            <!-- Social Media -->
+            <!-- Social Media Links -->
             <div class="footer-icons">
                 <ul>
                     <li>
@@ -87,14 +81,14 @@
                 </ul>
             </div>
 
-            <!-- Resume -->
+            <!-- Resume Download Button -->
             <div class="download-btn">
                 <a href="https://1drv.ms/w/c/b4623af99c4e7a32/EeDfA-CtsPBJhLltV9O4vn4BIE92mo26HQEclvS8-FcYGg" target="_blank">View My Resume</a>
             </div>
         </div>
     </div>
 
-    <!-- About Part -->
+    <!-- About Me Section -->
     <div class="About" id="About" data-aos="fade">
         <div class="About-img">
             <img src="imgs/profile_img2.jpg" alt="">
@@ -110,35 +104,35 @@
                     <div class="point-item"><div class="dot"></div></div>
                 </div>
                 <div class="About-matter">
-                <div class="reveal-text">
-                    <p class="text-shine">
-                    Completed Master's Degree specializing in AI/ML at KL University, Vaddeswaram, 
-                    with a stellar academic record (CGPA: 8.85).
-                    </p>
-                </div>
+                    <div class="reveal-text">
+                        <p class="text-shine">
+                        Completed Master's Degree specializing in AI/ML at KL University, Vaddeswaram, 
+                        with a stellar academic record (CGPA: 8.85).
+                        </p>
+                    </div>
 
-                <br><br>
+                    <br><br>
 
-                <div class="reveal-text">
-                    <p class="text-shine">
-                    Completed my Bachelor degree in Computer Science from Andhra Loyola College, 
-                    Vijayawada (CGPA: 6.45)
-                    </p>
-                </div>
+                    <div class="reveal-text">
+                        <p class="text-shine">
+                        Completed my Bachelor degree in Computer Science from Andhra Loyola College, 
+                        Vijayawada (CGPA: 6.45)
+                        </p>
+                    </div>
 
-                <br><br>
+                    <br><br>
 
-                <div class="reveal-text">
-                    <p class="text-shine">
-                    Excelled in my Intermediate MPC and SSC studies with CGPAs of 8.5 and 9.2 respectively.
-                    </p>
-                </div>
+                    <div class="reveal-text">
+                        <p class="text-shine">
+                        Excelled in my Intermediate MPC and SSC studies with CGPAs of 8.5 and 9.2 respectively.
+                        </p>
+                    </div>
                 </div>
             </div> 
         </div> 
     </div>
 
-    <!-- Skills Part -->
+    <!-- Skills & Technologies Section -->
     <div id="Skills" data-aos="fade">
         <div class="skill-title">
             <h1>Tech Stack & Tools</h1>
@@ -182,11 +176,11 @@
             </div>
         </div>
 
-        <!-- Floating Icons Container -->
+        <!-- Animated Floating Tech Icons Container -->
         <div class="floating-icons-container"></div>
     </div>
 
-    <!-- Projects Part -->
+    <!-- Projects Portfolio Section -->
     <div class="Projects" id="Projects" data-aos="fade">
         <div class="Projects-title">
             <h1>AI & ML Projects</h1>
@@ -223,7 +217,7 @@
         </div>
     </div>
 
-    <!-- Certifications Part -->
+    <!-- Professional Certifications Gallery -->
     <div class="gallery" id="Certificates" data-aos="fade">
         <div class="gallery-title">
             <h1>Professional Certifications</h1>
@@ -247,7 +241,7 @@
         <div class="gallery-controls"></div>
     </div>
     
-    <!-- Contact Part -->
+    <!-- Contact Form Section -->
     <div id="Contact" data-aos="fade">
         <div class="contact-form">
             <h2>Contact Me Here</h2>
@@ -271,7 +265,7 @@
         </div>
     </div>
 
-    <!-- Success Popup Modal -->
+    <!-- Success Modal for Form Submission -->
     <div class="success-modal" id="successModal">
         <div class="modal-content">
             <div class="success-icon">✉️</div>
@@ -281,17 +275,17 @@
         </div>
     </div>
 
-    <!-- Overlay -->
+    <!-- Modal Background Overlay -->
     <div class="modal-overlay" id="modalOverlay"></div>
 
-    <!-- Footer Part -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <p>Copyright &copy; 2025 Shaik Khaja. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Javascript Link -->
+    <!-- JavaScript Files & Initialization -->
     <script src="script.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
