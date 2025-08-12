@@ -518,17 +518,22 @@ class Carousel {
         this.carouselArray = [...items];
         this.autoScrollInterval = null;
         this.isHovered = false;
+        this.currentIndex = 0; // Track current position properly
     }
 
     updateGallery() {
+        // Clear all position classes
         this.carouselArray.forEach(el => {
             el.classList.remove('gallery-item-1', 'gallery-item-2', 'gallery-item-3', 'gallery-item-4', 'gallery-item-5');
         });
 
-        this.carouselArray.slice(0, 5).forEach((el, i) => {
-            el.classList.add(`gallery-item-${i + 1}`);
-        });
+        // Show only 5 items in proper sequence
+        for (let i = 0; i < 5; i++) {
+            const itemIndex = (this.currentIndex + i) % this.carouselArray.length;
+            this.carouselArray[itemIndex].classList.add(`gallery-item-${i + 1}`);
+        }
 
+        // Ensure smooth transitions
         setTimeout(() => {
             updateCertificateLink();
         }, 50);
@@ -536,9 +541,9 @@ class Carousel {
 
     setCurrentState(direction) {
         if (direction.className === 'gallery-controls-previous' || direction === 'previous') {
-            this.carouselArray.unshift(this.carouselArray.pop());
+            this.currentIndex = (this.currentIndex - 1 + this.carouselArray.length) % this.carouselArray.length;
         } else {
-            this.carouselArray.push(this.carouselArray.shift());
+            this.currentIndex = (this.currentIndex + 1) % this.carouselArray.length;
         }
         this.updateGallery();
     }
@@ -561,7 +566,8 @@ class Carousel {
             control.addEventListener('click', e => {
                 e.preventDefault();
                 this.setCurrentState(control);
-                this.resetAutoScroll();
+                // Don't reset auto-scroll after manual navigation
+                // This prevents the jumping issue after clicking previous/next
             });
         });
     }
@@ -588,22 +594,7 @@ class Carousel {
     }
 
     setupHoverControls() {
-        this.carouselContainer.addEventListener('mouseenter', () => {
-            this.isHovered = true;
-        });
-
-        this.carouselContainer.addEventListener('mouseleave', () => {
-            this.isHovered = false;
-        });
-
-        galleryControlsContainer.addEventListener('mouseenter', () => {
-            this.isHovered = true;
-        });
-
-        galleryControlsContainer.addEventListener('mouseleave', () => {
-            this.isHovered = false;
-        });
-
+        // Only pause scrolling when hovering over the certificate link icon
         if (linkWrapper) {
             linkWrapper.addEventListener('mouseenter', () => {
                 this.isHovered = true;
@@ -613,9 +604,22 @@ class Carousel {
                 this.isHovered = false;
             });
         }
+        
+        // Also pause when hovering over the controls
+        if (galleryControlsContainer) {
+            galleryControlsContainer.addEventListener('mouseenter', () => {
+                this.isHovered = true;
+            });
+
+            galleryControlsContainer.addEventListener('mouseleave', () => {
+                this.isHovered = false;
+            });
+        }
     }
 
     init() {
+        this.currentIndex = 0;
+        
         this.setControls();
         this.useControls();
         this.updateGallery();
@@ -626,6 +630,30 @@ class Carousel {
             updateCertificateLink();
         }, 100);
     }
+}
+
+// Initialize Certificate Carousel
+function initializeCarousel() {
+    if (galleryContainer && galleryItems.length > 0) {
+        const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls);
+        exampleCarousel.init();
+        
+        setTimeout(() => {
+            updateCertificateLink();
+        }, 200);
+    }
+}
+
+// DOM Content Loaded Event Listener for Carousel
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCarousel();
+});
+
+// Alternative initialization if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCarousel);
+} else {
+    initializeCarousel();
 }
 
 // ========================================

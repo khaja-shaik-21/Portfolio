@@ -677,7 +677,7 @@ nav ul li.active a {
 }
 
 .gallery {
-    height: 615px;
+    height: 650px; /* Increased to accommodate taller certificates */
     width: 100%;
     align-items: center;
     position: relative;
@@ -702,10 +702,11 @@ nav ul li.active a {
 .gallery-container {
     align-items: end;
     display: flex;
-    height: 400px;
+    height: 400px; /* Increased height to show full certificates */
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
+    overflow: visible; /* Changed back to visible to show full certificates */
 }
 
 /* Gallery Items Positioning */
@@ -718,6 +719,8 @@ nav ul li.active a {
     z-index: 0;
     border-radius: 15px;
     background-size: contain;
+    background-repeat: no-repeat; /* Prevent image repetition that could cause scroll bars */
+    background-position: center; /* Center the image */
 }
 
 .gallery-item-1 {
