@@ -181,39 +181,79 @@
     </div>
 
     <!-- Projects Portfolio Section -->
-    <div class="Projects" id="Projects" data-aos="fade">
-        <div class="Projects-title">
-            <h1>AI & ML Projects</h1>
+    <div class="projects-container" id="Projects">
+        <div class="projects-title">
+            <h1>What I've Built</h1>
         </div>
-        <div class="card-wrapper">
-            <ul class="card-list">
-                <li class="card-item">
-                    <div class="card-link" target="_blank">
-                        <img src="imgs/blood.png" alt="card-image" class="card-image">
-                        <p class="badge">DeepLearning</p>
-                        <p class="badge">CNN</p>
-                        <p class="badge">Django</p>
-                        <h2 class="card-title">Blood Group Detection Using Fingerprint</h2>
-                        <p class="card-desc"> The "Blood Group Detection Using Fingerprint" project leverages Deep Learning and CNNs to classify blood groups based on fingerprint images.</p>
-                        <div class="download-btn">
-                            <a href="https://github.com/khaja-shaik-21/Blood-Group-Detection-Using-Fingerprint.git" target="_blank">GitHub Repo</a>
-                        </div>
+        
+        <div class="cards-container" id="cardsContainer">
+            <!-- Project Card 1 -->
+            <div class="project-card collapsed" data-project="0">
+                <div class="vertical-title">
+                    <h3>Blood Group Detection</h3>
+                </div>
+                <div class="expanded-content">
+                    <img src="imgs/blood.png" alt="Blood Group Detection" class="project-image">
+                    
+                    <div class="tags-container">
+                        <span class="tag-badge">DeepLearning</span>
+                        <span class="tag-badge">CNN</span>
+                        <span class="tag-badge">Django</span>
                     </div>
-                </li>
-                <li class="card-item">
-                    <div class="card-link" target="_blank">
-                        <img src="imgs/image.jpg" alt="card-image" class="card-image">
-                        <p class="badge">Machine Learning</p>
-                        <p class="badge">Regression</p>
-                        <p class="badge">Django</p>
-                        <h2 class="card-title">Heart Disease Prediction</h2>
-                        <div class="card-desc"><p class="card-desc">This project is a Heart Disease Prediction System that predicts the likelihood of heart disease based on various patient inputs. It uses machine learning models to process patient data and provide a prediction about heart health risks.</p>
-                        <div class="download-btn">
-                            <a href="https://github.com/khaja-shaik-21/Heart-Disease-Prediction.git" target="_blank">GitHub Repo</a>
-                        </div>
+                    
+                    <h2 class="project-title">Blood Group Detection Using Fingerprint</h2>
+                    
+                    <p class="project-description">The "Blood Group Detection Using Fingerprint" project leverages Deep Learning and CNNs to classify blood groups based on fingerprint images.</p>
+                    
+                    <a href="https://github.com/khaja-shaik-21/Blood-Group-Detection-Using-Fingerprint.git" target="_blank" class="github-btn">GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card expanded" data-project="1">
+                <div class="vertical-title">
+                    <h3>Heart Disease Prediction</h3>
+                </div>
+                <div class="expanded-content">
+                    <img src="imgs/image.jpg" alt="Heart Disease Prediction" class="project-image">
+                    
+                    <div class="tags-container">
+                        <span class="tag-badge">Machine Learning</span>
+                        <span class="tag-badge">Regression</span>
+                        <span class="tag-badge">Django</span>
                     </div>
-                </li>
-            </ul>
+                    
+                    <h2 class="project-title">Heart Disease Prediction</h2>
+                    
+                    <p class="project-description">This project is a Heart Disease Prediction System that predicts the likelihood of heart disease based on various patient inputs. It uses machine learning models to process patient data and provide a prediction about heart health risks.</p>
+                    
+                    <a href="https://github.com/khaja-shaik-21/Heart-Disease-Prediction.git" target="_blank" class="github-btn">GitHub Repo</a>
+                </div>
+            </div>
+
+            <!-- ADD MORE PROJECT CARDS HERE -->
+            <!-- 
+            <div class="project-card collapsed" data-project="2">
+                <div class="vertical-title">
+                    <h3>Your New Project Name</h3>
+                </div>
+                <div class="expanded-content">
+                    <img src="imgs/your-image.jpg" alt="Project Name" class="project-image">
+                    
+                    <div class="tags-container">
+                        <span class="tag-badge">Technology1</span>
+                        <span class="tag-badge">Technology2</span>
+                        <span class="tag-badge">Technology3</span>
+                    </div>
+                    
+                    <h2 class="project-title">Your Project Title</h2>
+                    
+                    <p class="project-description">Your project description goes here...</p>
+                    
+                    <a href="your-github-link" target="_blank" class="github-btn">GitHub Repo</a>
+                </div>
+            </div>
+            -->
         </div>
     </div>
 

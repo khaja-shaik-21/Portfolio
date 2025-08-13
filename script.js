@@ -466,6 +466,239 @@ class FloatingIconsManager {
 }
 
 // ========================================
+// PROJECT CARDS INTERACTION
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.project-card');
+    const container = document.querySelector('.cards-container');
+    
+    // Calculate center card index dynamically for ANY number of cards
+    const totalCards = cards.length;
+    const centerCardIndex = Math.floor(totalCards / 2);
+    
+    // Auto-scroll variables
+    let autoScrollInterval;
+    let currentAutoIndex = 0;
+    let isUserInteracting = false;
+    let hasCompletedFullCycle = false;
+    let isProjectSectionVisible = false;
+    let isHoveringCard = false;
+    
+    console.log(`SCALABLE SYSTEM: ${totalCards} cards detected!`);
+    console.log(`Center card index: ${centerCardIndex}`);
+    console.log(`Will auto-scroll: Card 0 → Card 1 → ... → Card ${totalCards-1} → Center Card ${centerCardIndex}`);
+    
+    // Function to expand a specific card
+    function expandCard(index) {
+        cards.forEach((card, i) => {
+            if (i === index) {
+                card.classList.add('expanded');
+                card.classList.remove('collapsed');
+            } else {
+                card.classList.add('collapsed');
+                card.classList.remove('expanded');
+            }
+        });
+        console.log(`Expanded card ${index}`);
+    }
+    
+    // Initialize: Set center card as expanded on page load (works for ANY number of cards)
+    function initializeCards() {
+        expandCard(centerCardIndex);
+        console.log(`Initialized with center card: ${centerCardIndex} (Total: ${totalCards} cards)`);
+    }
+    
+    // Auto-scroll function - cycles through ALL N cards (0 to N-1) then returns to center
+    function startAutoScroll() {
+        if (isUserInteracting || hasCompletedFullCycle) {
+            console.log('Auto-scroll blocked - user interacting or cycle complete');
+            return;
+        }
+        
+        console.log(`Starting auto-scroll for ${totalCards} cards...`);
+        console.log(`Sequence: 0 → 1 → 2 → ... → ${totalCards-1} → Center(${centerCardIndex})`);
+        currentAutoIndex = 0; // Always start from first card (index 0)
+        
+        // First, immediately show card 0
+        expandCard(currentAutoIndex);
+        console.log(`Auto-scroll: Showing card ${currentAutoIndex}/${totalCards-1}`);
+        
+        autoScrollInterval = setInterval(() => {
+            if (isUserInteracting) {
+                console.log('Auto-scroll stopped - user interaction detected');
+                clearInterval(autoScrollInterval);
+                return;
+            }
+            
+            // Move to next card
+            currentAutoIndex++;
+            
+            // Check if we've shown all N cards
+            if (currentAutoIndex >= totalCards) {
+                console.log(`Auto-scroll: Completed full cycle of ${totalCards} cards, returning to center`);
+                // Cycle complete - go back to center card and stop
+                expandCard(centerCardIndex);
+                hasCompletedFullCycle = true;
+                clearInterval(autoScrollInterval);
+                console.log(`Auto-scroll permanently stopped after showing all ${totalCards} cards`);
+                return;
+            }
+            
+            // Expand current card
+            expandCard(currentAutoIndex);
+            console.log(`Auto-scroll: Showing card ${currentAutoIndex}/${totalCards-1}`);
+            
+        }, 3000); // 3 seconds per card (adjustable for N cards)
+    }
+    
+    // Stop auto-scroll function
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            console.log('Auto-scroll manually stopped');
+        }
+    }
+    
+    // Check if project section is in viewport
+    function checkProjectSectionVisibility() {
+        const rect = container.getBoundingClientRect();
+        const isVisible = (rect.top >= 0 && rect.top <= window.innerHeight) || 
+                         (rect.bottom >= 0 && rect.bottom <= window.innerHeight) ||
+                         (rect.top < 0 && rect.bottom > window.innerHeight);
+        
+        if (isVisible && !isProjectSectionVisible) {
+            isProjectSectionVisible = true;
+            console.log('Project section became visible - starting auto-scroll in 1 second');
+            
+            // Start auto-scroll after 1 second when section becomes visible
+            setTimeout(() => {
+                if (!isUserInteracting && !hasCompletedFullCycle && isProjectSectionVisible) {
+                    startAutoScroll();
+                }
+            }, 1000);
+        } else if (!isVisible && isProjectSectionVisible) {
+            isProjectSectionVisible = false;
+            console.log('Project section not visible');
+            stopAutoScroll();
+        }
+    }
+    
+    // Initialize cards on page load
+    initializeCards();
+    
+    // Check initial visibility
+    setTimeout(checkProjectSectionVisibility, 500);
+    
+    // Monitor scroll to detect when project section comes into view
+    window.addEventListener('scroll', checkProjectSectionVisibility);
+    
+    // Add hover event listeners for manual control (works for ANY number of cards)
+    cards.forEach((card, index) => {
+        card.addEventListener('mouseenter', function() {
+            console.log(`User hovered on card ${index}/${totalCards-1}`);
+            
+            // Stop auto-scroll if running
+            isUserInteracting = true;
+            stopAutoScroll();
+            isHoveringCard = true;
+            
+            // Expand the hovered card - NO TIMERS, STAYS OPEN
+            expandCard(index);
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            console.log(`Mouse left Card ${index}/${totalCards-1} - Card STAYS OPEN (no auto-return)`);
+            isHoveringCard = false;
+            // Card stays open - no automatic return to center!
+        });
+        
+        // Mobile touch support for N cards
+        card.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                console.log(`User clicked card ${index}/${totalCards-1} on mobile`);
+                isUserInteracting = true;
+                stopAutoScroll();
+                isHoveringCard = true;
+                expandCard(index);
+            }
+        });
+    });
+
+    // Container events - simplified (no automatic returns)
+    container.addEventListener('mouseenter', function() {
+        console.log('Mouse entered project container');
+    });
+
+    container.addEventListener('mouseleave', function() {
+        console.log('Mouse left project container - Cards STAY as they are');
+        isHoveringCard = false;
+        isUserInteracting = false;
+        // No automatic changes when leaving container!
+    });
+    
+    // Keyboard navigation for N cards
+    document.addEventListener('keydown', function(e) {
+        if (e.key.includes('Arrow')) {
+            console.log(`Keyboard navigation detected (${totalCards} cards available)`);
+            isUserInteracting = true;
+            stopAutoScroll();
+            hasCompletedFullCycle = true; // Keyboard use = permanent manual mode
+            isHoveringCard = true;
+            
+            const currentExpanded = document.querySelector('.project-card.expanded');
+            const currentIndex = Array.from(cards).indexOf(currentExpanded);
+            
+            let newIndex = currentIndex;
+            
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                newIndex = currentIndex > 0 ? currentIndex - 1 : totalCards - 1;
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                newIndex = currentIndex < totalCards - 1 ? currentIndex + 1 : 0;
+            }
+            
+            expandCard(newIndex);
+            console.log(`Keyboard navigation: ${currentIndex} → ${newIndex} (Total: ${totalCards})`);
+        }
+    });
+    
+    // Handle window resize - reset everything fresh
+    window.addEventListener('resize', function() {
+        console.log('Window resized - FRESH RESTART');
+        stopAutoScroll();
+        
+        // Reset ALL variables to initial state
+        isUserInteracting = false;
+        hasCompletedFullCycle = false;
+        isProjectSectionVisible = false;
+        isHoveringCard = false;
+        currentAutoIndex = 0;
+        
+        setTimeout(() => {
+            initializeCards(); // Start with center card
+            checkProjectSectionVisibility(); // Begin fresh auto-scroll if needed
+        }, 200);
+    });
+    
+    // Pause when page is hidden
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            stopAutoScroll();
+            console.log('Page hidden - auto-scroll paused');
+        } else {
+            console.log('Page visible - checking if auto-scroll should resume');
+            setTimeout(checkProjectSectionVisibility, 500);
+        }
+    });
+    
+    console.log('SCALABLE Project animation system initialized successfully!');
+    console.log(`System supports: ${totalCards} cards with center at index ${centerCardIndex}`);
+    console.log('Behavior: Auto-scroll ALL N cards → Manual hover → Cards STAY OPEN until user hovers different card');
+    console.log(`Auto-scroll sequence: 0→1→2→...→${totalCards-1}→Center(${centerCardIndex})→STOP`);
+});
+
+
+// ========================================
 // CERTIFICATE CAROUSEL GALLERY SYSTEM
 // ========================================
 const certificateLinks = {
