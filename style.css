@@ -579,7 +579,9 @@ nav ul li.active a {
 
 .projects-title {
     margin-bottom: 30px;
+    margin-top: 20px;
     text-align: center;
+    width: 65%;
 }
 
 .projects-title h1 {
