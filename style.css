@@ -1177,6 +1177,12 @@ nav ul li.active a {
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
+    resize: both;
+    overflow: auto;
+    max-height: 100px;
+    min-height: 50px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .form-group textarea {
