@@ -244,19 +244,146 @@ nav ul li.active a {
 }
 
 /* Social Media Icons */
+.footer-icons {
+    padding: 5px;
+}
+
 .footer-icons ul {
     list-style: none;
+    padding: 0;
     margin: 0;
-    padding-top: 20px;
+    padding-top: 10px;
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.footer-icons ul li a {
+.footer-icons li {
+    position: relative;
+}
+
+.footer-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 30%;
     text-decoration: none;
-    font-size: 0.5rem;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Shine effect */
+.footer-icons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.footer-icons a:hover::before {
+    left: 100%;
+}
+
+.footer-icons i {
+    font-size: 32px !important;
+    color: #333 !important;
+    transition: all 0.3s ease;
+    z-index: 2;
+    position: relative;
+}
+
+/* Ripple effect */
+.footer-icons a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.footer-icons a:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Hover effects */
+.footer-icons a:hover {
+    transform: translateY(-10px) rotate(5deg) scale(1.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s infinite;
+}
+
+/* LinkedIn */
+.footer-icons li:nth-child(1) a:hover {
+    background: linear-gradient(135deg, #0077b5, #005885);
+}
+
+.footer-icons li:nth-child(1) a:hover i {
+    color: white !important;
+}
+
+/* GitHub */
+.footer-icons li:nth-child(2) a:hover {
+    background: linear-gradient(135deg, #000000, #000000);
+}
+
+.footer-icons li:nth-child(2) a:hover i {
+    color: white !important;
+}
+
+/* LeetCode */
+.footer-icons li:nth-child(3) a:hover {
+    background: linear-gradient(135deg, #000000, #a36810, #ea8006);
+}
+
+.footer-icons li:nth-child(3) a:hover i {
+    color: white !important;
+}
+
+/* Instagram */
+.footer-icons li:nth-child(4) a:hover {
+    background: linear-gradient(135deg, #6814ac, #aa1667, #e9ad58);
+}
+
+.footer-icons li:nth-child(4) a:hover i {
+    color: white !important;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+    50% { box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4); }
+    100% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .footer-icons ul {
+        gap: 15px;
+    }
+    
+    .footer-icons a {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .footer-icons i {
+        font-size: 20px !important;
+    }
+}
 /* Action Button Styles */
 .download-btn {
     color: black;
