@@ -286,7 +286,7 @@ nav ul li.active a {
 
 /* Hover effects - removed translateY(-10px) to eliminate pop-up */
 .footer-icons a:hover {
-    transform: rotate(5deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     animation: pulse 1.5s infinite;
 }
