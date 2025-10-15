@@ -686,9 +686,9 @@ nav ul li.active a {
 .cards-container {
     display: flex;
     gap: 2%;
-    height: 550px;
+    height: 570px;
     max-width: 1400px; 
-    width: 40%;
+    width: 45%;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -702,7 +702,7 @@ nav ul li.active a {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-width: 100px; /* Minimum width for many cards */
+    min-width: 100px;
 }
 
 .project-card.collapsed {
@@ -710,7 +710,8 @@ nav ul li.active a {
 }
 
 .project-card.expanded {
-    flex: 2; /* Takes more space when expanded */
+    flex: 2;
+    background: white !important;
 }
 
 /* Dynamic collapsed width calculation for many cards */
@@ -748,10 +749,9 @@ nav ul li.active a {
 }
 
 .vertical-title h3 {
-    font-size: 27px; /* Reduced for better fit with more cards */
+    font-size: 27px;
     font-weight: 600;
     color: #35374B;
-    text-transform: uppercase;
     letter-spacing: 1px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -760,7 +760,7 @@ nav ul li.active a {
 /* Expanded Content */
 .expanded-content {
     opacity: 0;
-    padding: 30px;
+    padding: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -773,6 +773,46 @@ nav ul li.active a {
     transform: translateY(0);
 }
 
+/* Academic Badge Styles */
+.academic-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    padding: 8px 16px;
+    border-radius: 20px 20px 20px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.badge-degree {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.badge-masters {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.project-card.expanded .academic-badge {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card.expanded:hover .academic-badge {
+    transform: translateY(0) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Project Content Elements */
 .project-image {
     width: 100%;
     height: 200px;
@@ -793,7 +833,7 @@ nav ul li.active a {
     color: #0056b3;
     padding: 6px 14px;
     border-radius: 25px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -833,7 +873,7 @@ nav ul li.active a {
     box-shadow: 0 5px 15px rgba(53, 55, 75, 0.3);
 }
 
-/* Dynamic Card Background Colors - Supports unlimited cards */
+/* Dynamic Card Background Colors */
 .project-card:nth-child(1) {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -874,11 +914,6 @@ nav ul li.active a {
     background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
 }
 
-/* Override background for expanded cards to white */
-.project-card.expanded {
-    background: white !important;
-}
-
 /* Responsive Design */
 @media (max-width: 1200px) {
     .cards-container {
@@ -890,9 +925,8 @@ nav ul li.active a {
     .cards-container {
         flex-direction: column;
         height: auto;
-        max-height: none;
+        max-height: 80vh;
         overflow-y: auto;
-        max-height: 80vh; /* Scrollable on mobile if many cards */
     }
 
     .project-card {
@@ -905,14 +939,14 @@ nav ul li.active a {
         height: 400px;
     }
 
+    .vertical-title {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
     .vertical-title h3 {
         transform: none;
         font-size: 14px;
         letter-spacing: 1px;
-    }
-
-    .vertical-title {
-        transform: translate(-50%, -50%) rotate(0deg);
     }
 
     .expanded-content {
