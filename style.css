@@ -854,7 +854,7 @@ nav ul li.active a {
     font-family: "DM Serif Text", serif;
 }
 
-.github-btn {
+.github-btn, .web-btn {
     display: inline-block;
     background: #35374B;
     color: white;
@@ -867,7 +867,7 @@ nav ul li.active a {
     align-self: flex-start;
 }
 
-.github-btn:hover {
+.github-btn:hover, .web-btn:hover {
     background: #282a3a;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(53, 55, 75, 0.3);
