@@ -1383,71 +1383,118 @@ nav ul li.active a {
     transform: translate(-50%, -50%) scale(1);
     animation: modalAppear 0.4s ease-out;
 }
-
-.modal-overlay {
+/* Overlay */
+#modalOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    pointer-events: none;
-    will-change: opacity;
+    transition: 0.3s ease;
+    z-index: 20;
 }
 
-.modal-overlay.show {
+#modalOverlay.show {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
 }
 
-body.modal-open {
-    overflow: hidden;
-    padding-right: 0;
+/* Modal */
+.success-modal {
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 35px 35px 40px;
+    width: 420px;
+    text-align: center;
+    color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.35s ease;
+    z-index: 30;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
 }
 
-.modal-content {
-    position: relative;
+.success-modal.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.success-icon {
-    font-size: 60px;
-    margin-bottom: 20px;
-    animation: bounce 1s ease-in-out;
+.modal-content h3 {
+    font-size: 28px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #222;
 }
 
-.success-modal h3 {
-    color: #35374B;
-    margin-bottom: 15px;
-    font-size: 24px;
-    font-family: "DM Serif Text", serif;
-}
-
-.success-modal p {
+.modal-content p {
+    font-size: 18px;
+    margin-top: 8px;
     color: #666;
-    margin-bottom: 30px;
-    font-size: 16px;
     line-height: 1.5;
 }
 
+/* Animation Area */
+.success-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px auto;
+    position: relative;
+}
+
+#mailAnimationContainer {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.5s ease;
+}
+
+#mailAnimationContainer.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#successTick {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+    opacity: 0;
+    transition: 0.6s cubic-bezier(.68,-.55,.265,1.55);
+}
+
+#successTick.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+/* OK Button */
 .ok-button {
-    background-color: #000;
-    color: white;
+    margin-top: 25px;
+    padding: 12px 35px;
     border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 16px;
+    background: black;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 30px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.25s ease;
 }
 
 .ok-button:hover {
-    background-color: #333;
-    transform: translateY(-2px);
+    opacity: 0.8;
+    transform: translateY(-1px);
 }
 
 /* Modal Animation Keyframes */

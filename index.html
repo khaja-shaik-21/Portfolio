@@ -46,6 +46,10 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://khaja-shaik-21.github.io/Portfolio/">
+
+    <!-- Lottie Player Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+
 </head>
 <body>
     <!-- Modern Pill Navigation Bar -->
@@ -381,18 +385,30 @@
         </div>
     </div>
 
-    <!-- Success Modal for Form Submission -->
+    <!-- SUCCESS MODAL -->
     <div class="success-modal" id="successModal">
         <div class="modal-content">
-            <div class="success-icon">✉️</div>
+            
+            <!-- ANIMATION (mail → tick) -->
+            <div class="success-icon">
+                <div id="mailAnimationContainer"></div>
+
+                <svg id="successTick" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#4CAF50" stroke="#fff" stroke-width="3"/>
+                    <path d="M30 50 L45 65 L70 35" stroke="#fff" stroke-width="8" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
             <h3>Gotcha! 📬</h3>
             <p>Your message just landed in my inbox. I’ll get back to you shortly.</p>
+
             <button class="ok-button" id="okButton">OK</button>
         </div>
     </div>
 
-    <!-- Modal Background Overlay -->
-    <div class="modal-overlay" id="modalOverlay"></div>
+    <!-- Overlay -->
+    <div id="modalOverlay"></div>
 
     <!-- Footer Section -->
     <footer>

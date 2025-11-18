@@ -889,95 +889,183 @@ if (document.readyState === 'loading') {
     initializeCarousel();
 }
 
+
+
 // ========================================
-// CONTACT FORM WITH SUCCESS MODAL SYSTEM
+// CONTACT FORM WITH SUCCESS MODAL SYSTEM + VALIDATION
 // ========================================
-class ContactFormHandler {
-    constructor() {
-        this.form = document.getElementById('contactForm');
-        this.successModal = document.getElementById('successModal');
-        this.modalOverlay = document.getElementById('modalOverlay');
-        this.okButton = document.getElementById('okButton');
-        
-        this.bindEvents();
-    }
+const overlay = document.getElementById("modalOverlay");
+const modal = document.getElementById("successModal");
+const okButton = document.getElementById("okButton");
 
-    bindEvents() {
-        this.form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await this.handleFormSubmission();
-        });
+const form = document.getElementById("contactForm");
 
-        this.okButton.addEventListener('click', () => {
-            this.hideSuccessModal();
-        });
+const mailAnim = document.getElementById("mailAnimationContainer");
+const successTick = document.getElementById("successTick");
 
-        this.modalOverlay.addEventListener('click', () => {
-            this.hideSuccessModal();
-        });
+const tickSound = new Audio("assets/send-sound.mp3");
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && this.successModal.classList.contains('show')) {
-                this.hideSuccessModal();
-            }
-        });
-    }
+let lottieAnimation = null;
+let animationComplete = false;
 
-    async handleFormSubmission() {
-        const submitButton = this.form.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-        
-        const formData = new FormData(this.form);
+// Load Lottie animation
+window.addEventListener("DOMContentLoaded", () => {
+    lottieAnimation = lottie.loadAnimation({
+        container: mailAnim,
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: "assets/send-email.json"
+    });
+});
 
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000);
-            
-            const response = await fetch(this.form.action, {
-                method: this.form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                },
-                signal: controller.signal
-            });
 
-            clearTimeout(timeoutId);
-
-            if (response.ok) {
-                this.showSuccessModal();
-                this.form.reset();
-            } else {
-                alert('Oops! There was a problem submitting your Contact form.');
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            if (error.name === 'AbortError') {
-                alert('Request timed out. Please try again.');
-            } else {
-                alert('Oops! There was a problem submitting your Contact form.');
-            }
-        } finally {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-    }
-
-    showSuccessModal() {
-        document.body.classList.add('modal-open');
-        this.modalOverlay.classList.add('show');
-        this.successModal.classList.add('show');
-    }
-
-    hideSuccessModal() {
-        document.body.classList.remove('modal-open');
-        this.modalOverlay.classList.remove('show');
-        this.successModal.classList.remove('show');
-    }
+// ERROR MESSAGE ELEMENTS
+function injectErrorElements() {
+    const fields = ["name", "email", "message"];
+    fields.forEach(id => {
+        const input = document.getElementById(id);
+        let error = document.createElement("small");
+        error.className = "input-error";
+        error.style.color = "red";
+        error.style.fontSize = "13px";
+        error.style.marginTop = "4px";
+        error.style.display = "none";
+        input.insertAdjacentElement("afterend", error);
+    });
 }
+
+injectErrorElements();
+
+// VALIDATION FUNCTION
+function validateForm() {
+    let isValid = true;
+
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    const errors = document.querySelectorAll(".input-error");
+    errors.forEach(e => e.style.display = "none");
+
+    // Validate Name
+    if (name.value.trim().length < 2) {
+        name.nextElementSibling.innerText = "Please enter a valid name.";
+        name.nextElementSibling.style.display = "block";
+        isValid = false;
+    }
+
+    // Validate Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value.trim())) {
+        email.nextElementSibling.innerText = "Please enter a valid email address.";
+        email.nextElementSibling.style.display = "block";
+        isValid = false;
+    }
+
+    // Validate Message
+    if (message.value.trim().length < 5) {
+        message.nextElementSibling.innerText = "Message must be at least 5 characters.";
+        message.nextElementSibling.style.display = "block";
+        isValid = false;
+    }
+
+    if (message.value.trim().length > 500) {
+        message.nextElementSibling.innerText = "Message must be less than 500 characters.";
+        message.nextElementSibling.style.display = "block";
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+// FORM SUBMISSION (NO REDIRECT)
+form.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Stop redirect
+
+    if (!validateForm()) {
+        return; // ❌ Do not submit if validation fails
+    }
+
+    const submitBtn = form.querySelector("button");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+
+    const formData = new FormData(form);
+
+    try {
+        await fetch("https://formspree.io/f/xjkynddq", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        showSuccessModal();
+        form.reset();
+    } catch (err) {
+        alert("Something went wrong! Please try again.");
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Send Message";
+});
+
+
+// ===============================
+// SUCCESS MODAL ANIMATION SYSTEM
+// ===============================
+function showSuccessModal() {
+    animationComplete = false;
+
+    overlay.classList.add("show");
+    modal.classList.add("show");
+
+    mailAnim.classList.remove("hidden");
+    successTick.classList.remove("show");
+
+    setTimeout(() => {
+        lottieAnimation.goToAndStop(0, true);
+        lottieAnimation.play();
+
+        lottieAnimation.addEventListener("complete", onAnimationDone);
+    }, 200);
+}
+
+function onAnimationDone() {
+    if (animationComplete) return;
+    animationComplete = true;
+
+    mailAnim.classList.add("hidden");
+
+    setTimeout(() => {
+        successTick.classList.add("show");
+
+        // 🔊 Play tick sound exactly when green tick appears
+        tickSound.currentTime = 0;
+        tickSound.play();
+    }, 350);
+}
+
+
+function closeModal() {
+    overlay.classList.remove("show");
+    modal.classList.remove("show");
+
+    // Reset animation states
+    mailAnim.classList.remove("hidden");
+    successTick.classList.remove("show");
+    lottieAnimation.stop();
+}
+
+// OK button closes modal
+okButton.addEventListener("click", closeModal);
+
+// Clicking outside modal closes it
+overlay.addEventListener("click", closeModal);
+
+
 
 // ========================================
 // INITIALIZATION AND EVENT HANDLERS
