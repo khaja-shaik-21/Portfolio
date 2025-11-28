@@ -903,7 +903,7 @@ const form = document.getElementById("contactForm");
 const mailAnim = document.getElementById("mailAnimationContainer");
 const successTick = document.getElementById("successTick");
 
-const tickSound = new Audio("assets/send-sound.mp3");
+const tickSound = new Audio("assets/applepay.mp3");
 
 let lottieAnimation = null;
 let animationComplete = false;
