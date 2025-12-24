@@ -242,7 +242,6 @@ class FloatingIconsManager {
             { icon: 'devicon-css3-plain colored', name: 'CSS' },
             { icon: 'devicon-javascript-plain colored', name: 'JavaScript' },
             { icon: 'devicon-react-original colored', name: 'React' },
-            { icon: 'devicon-django-plain', name: 'Django' },
             { icon: 'devicon-flask-original-wordmark colored', name: 'Flask' },
             { icon: 'devicon-mysql-plain-wordmark colored', name: 'MySQL' },
             { icon: 'devicon-mongodb-plain-wordmark colored', name: 'MongoDB' },
@@ -255,8 +254,9 @@ class FloatingIconsManager {
             { icon: 'devicon-python-plain colored', name: 'Python' },
             { icon: 'devicon-git-plain colored', name: 'Git' },
             { icon: 'devicon-github-original-wordmark colored', name: 'GitHub' },
-            { icon: 'devicon-googlecloud-plain', name: 'GCP' },
             { icon: 'devicon-amazonwebservices-plain-wordmark', name: 'AWS' },
+            { icon: 'devicon-azure-plain colored', name: 'Azure' },
+            { icon: 'devicon-azuredevops-plain colored', name: 'Azure DevOps' },
             { icon: 'devicon-vscode-plain colored', name: 'VS Code' },
             { icon: 'devicon-jupyter-plain colored', name: 'Jupyter Notebook' },
             { icon: 'devicon-pycharm-plain colored', name: 'PyCharm' }
