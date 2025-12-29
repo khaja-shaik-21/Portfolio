@@ -238,25 +238,33 @@ class FloatingIconsManager {
         this.maxActiveIcons = 5;
         
         this.techIcons = [
+            // Full Stack Development
             { icon: 'devicon-html5-plain colored', name: 'HTML' },
             { icon: 'devicon-css3-plain colored', name: 'CSS' },
             { icon: 'devicon-javascript-plain colored', name: 'JavaScript' },
             { icon: 'devicon-react-original colored', name: 'React' },
-            { icon: 'devicon-flask-original-wordmark colored', name: 'Flask' },
+            { icon: 'devicon-flask-original colored', name: 'Flask' },
+            { icon: 'devicon-fastapi-plain colored', name: 'FastAPI' },
             { icon: 'devicon-mysql-plain-wordmark colored', name: 'MySQL' },
             { icon: 'devicon-mongodb-plain-wordmark colored', name: 'MongoDB' },
             { icon: 'devicon-postgresql-plain', name: 'PostgreSQL' },
             { icon: 'devicon-sqlite-plain', name: 'SQLite' },
-            { icon: 'devicon-numpy-plain-wordmark colored', name: 'NumPy' },
+            { icon: 'devicon-sqlalchemy-plain-wordmark colored', name: 'SQLAlchemy' },
+
+            // Data Science & Machine Learning
+            { icon: 'devicon-numpy-plain colored', name: 'NumPy' },
             { icon: 'devicon-pandas-plain-wordmark colored', name: 'Pandas' },
             { icon: 'devicon-matplotlib-plain', name: 'Matplotlib' },
-            { icon: 'devicon-plotly-plain-wordmark', name: 'Plotly' },
+            { icon: 'devicon-plotly-plain colored', name: 'Plotly' },
+            { icon: 'devicon-scikitlearn-plain colored', name: 'Scikit-Learn' },
+
+            // General Programming & Tools
             { icon: 'devicon-python-plain colored', name: 'Python' },
             { icon: 'devicon-git-plain colored', name: 'Git' },
             { icon: 'devicon-github-original-wordmark colored', name: 'GitHub' },
             { icon: 'devicon-amazonwebservices-plain-wordmark', name: 'AWS' },
-            { icon: 'devicon-azure-plain colored', name: 'Azure' },
-            { icon: 'devicon-azuredevops-plain colored', name: 'Azure DevOps' },
+            { icon: 'devicon-googlecloud-plain', name: 'Google Cloud' },
+            { icon: 'devicon-googlecolab-plain colored', name: 'Google Colab' }, 
             { icon: 'devicon-vscode-plain colored', name: 'VS Code' },
             { icon: 'devicon-jupyter-plain colored', name: 'Jupyter Notebook' },
             { icon: 'devicon-pycharm-plain colored', name: 'PyCharm' }
