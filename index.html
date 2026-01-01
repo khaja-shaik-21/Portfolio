@@ -35,6 +35,7 @@
     
     <!-- External Stylesheets -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="new_year.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -412,12 +413,13 @@
     <!-- Footer Section -->
     <footer>
         <div class="footer-container">
-            <p>Copyright &copy; 2025 Shaik Khaja. All Rights Reserved.</p>
+            <p>Copyright &copy; 2026 Shaik Khaja. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- JavaScript Files & Initialization -->
     <script src="script.js"></script>
+    <script src="new_year.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -427,6 +429,24 @@
             offset: 80
         });
     </script>
+
+
+    <!-- New Year Banner -->
+    <div class="new-year-banner" id="newYearBanner">
+        <button class="close-banner" id="closeBanner">×</button>
+        
+        <div class="banner-content">
+            <h1 class="banner-message">Happy New Year</h1>
+            <h2 class="banner-year">2026</h2>
+            <p class="banner-wish">Wishing you success and happiness!</p>
+        </div>
+
+        <!-- Fireworks/Crackers Container -->
+        <div class="fireworks-container" id="fireworksContainer"></div>
+        
+        <!-- Confetti Container -->
+        <div class="confetti-container" id="confettiContainer"></div>
+    </div>
 
 </body>
 </html>
