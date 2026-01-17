@@ -705,66 +705,59 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(`Auto-scroll sequence: 0→1→2→...→${totalCards-1}→Center(${centerCardIndex})→STOP`);
 });
 // Image Carousel JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all carousels (in case you have multiple project cards)
+document.addEventListener('DOMContentLoaded', () => {
     const carousels = document.querySelectorAll('.image-carousel');
-    
+
     carousels.forEach(carousel => {
         const images = carousel.querySelectorAll('.project-image');
         let currentIndex = 0;
-        let autoPlayInterval;
-        
-        // Function to show specific image
+        let autoPlayInterval = null;
+        const INTERVAL_TIME = 4000; // 4 seconds (smooth)
+
         function showImage(index) {
-            // Remove active class from all images
             images.forEach(img => img.classList.remove('active'));
-            
-            // Add active class to current image
             images[index].classList.add('active');
             currentIndex = index;
         }
-        
-        // Next image
+
         function nextImage() {
-            let newIndex = (currentIndex + 1) % images.length;
-            showImage(newIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
         }
-        
-        // Auto-play carousel (optional - 2 seconds per image)
+
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextImage, 5000);
+            if (autoPlayInterval) return; // prevent multiple intervals
+            autoPlayInterval = setInterval(nextImage, INTERVAL_TIME);
         }
-        
+
         function stopAutoPlay() {
             clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
         }
-        
-        // Pause auto-play on hover
+
+        // Hover behavior
         carousel.addEventListener('mouseenter', stopAutoPlay);
         carousel.addEventListener('mouseleave', startAutoPlay);
-        
-        // Start auto-play when card is expanded
+
+        // Watch card expand
         const card = carousel.closest('.project-card');
         if (card) {
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.attributeName === 'class') {
-                        if (card.classList.contains('expanded')) {
-                            startAutoPlay();
-                        } else {
-                            stopAutoPlay();
-                        }
-                    }
-                });
+            const observer = new MutationObserver(() => {
+                if (card.classList.contains('expanded')) {
+                    startAutoPlay();
+                } else {
+                    stopAutoPlay();
+                }
             });
-            
+
             observer.observe(card, { attributes: true });
         }
-        
-        // Initialize first image
+
+        // Init
         showImage(0);
     });
 });
+
 
 // ========================================
 // CERTIFICATE CAROUSEL GALLERY SYSTEM
