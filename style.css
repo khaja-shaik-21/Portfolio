@@ -704,13 +704,13 @@ nav ul li.active a {
     color: #35374B;
     font-weight: 600;
 }
-
+/* Change Cards Width Here */
 .cards-container {
     display: flex;
     gap: 2%;
     height: 570px;
     max-width: 1400px; 
-    width: 50%;
+    width: 60%;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -841,6 +841,110 @@ nav ul li.active a {
     object-fit: cover;
     border-radius: 15px;
     margin-bottom: 20px;
+}
+
+/* Image Carousel Styles */
+.image-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.carousel-images .project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    transform: scale(1.05);
+}
+
+.carousel-images .project-image.active {
+    position: relative;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+/* Navigation Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: #fff;
+    width: 12px;
+    height: 12px;
+}
+
+/* Arrow Navigation */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.image-carousel:hover .carousel-arrow {
+    opacity: 1;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    left: 10px;
+}
+
+.carousel-arrow.next {
+    right: 10px;
 }
 
 .tags-container {
@@ -1007,6 +1111,30 @@ nav ul li.active a {
 
     .vertical-title h3 {
         font-size: 12px;
+    }
+}
+/* Mobile Responsiveness Image Carousel Styles */
+@media (max-width: 768px) {
+    .carousel-arrow {
+        opacity: 1;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+    
+    .carousel-dots {
+        bottom: 10px;
+        gap: 6px;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .dot.active {
+        width: 10px;
+        height: 10px;
     }
 }
 
