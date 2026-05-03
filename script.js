@@ -766,6 +766,7 @@ const certificateLinks = {
     'Aviatrix_cloud.jpg': 'https://www.credly.com/badges/b2f8b061-fe9f-46d3-b8c9-872d2d541fa7/public_url',
     'Python_Udemy.jpg': 'https://www.udemy.com/certificate/UC-557254a0-542b-4267-b52d-91782195d9af/', 
     'Google_Cloud_Fundamentals.png': 'https://www.cloudskillsboost.google/public_profiles/9e676916-e61f-4c0e-a880-fac5df24540b/badges/15555915',
+    'Infosys_Springboard_Internship copy.jpg': 'https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_0145425590476881922/e0093b9f-a8f9-4928-8bb1-c7d199407c4a.pdf',
     'Python_HackerRank.png': 'https://www.hackerrank.com/certificates/iframe/4fee9a38240c',
     'SQL_Hacker_Rank_Basics.jpg': 'https://www.hackerrank.com/certificates/iframe/1a4dbbabc8e9'
 };
